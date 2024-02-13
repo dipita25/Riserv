@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
   def index
     @services = Service.all
   end
-  
+
   def show
   end
 
@@ -43,4 +43,15 @@ class ServicesController < ApplicationController
     @service.destroy
     redirect_to services_url, notice: 'Service was successfully destroyed.'
   end
+
+  private
+
+    def set_service
+      @service = Service.find(params[:id])
+    end
+
+
+    def service_params
+      params.require(:service).permit(:title, :description, :price, :id_user)
+    end
 end
