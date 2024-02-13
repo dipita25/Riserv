@@ -1,0 +1,6 @@
+<%= simple_form_for(@slot) do |f| %>
+  <%= f.input :user_id, as: :integer, :as => :hidden %>
+  <%= f.input :startTime %>
+  <%= f.input :endTime %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

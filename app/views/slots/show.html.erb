@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Détail de Créneau</h1>
+
+  ID  = <%= @slot.id %>
+
+  <%= button_to 'Supprimer', slot_destroy_path(id: @slot), method: :delete,
+        data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+</div>
