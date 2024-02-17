@@ -1,6 +1,5 @@
 <h1>Pages#home</h1>
 
-
-<%= link_to "Mes réservations", reservations_path%> <br>
-<%= link_to "Mes creneaux", slots_path%><br>
-<%= link_to "Mes Services", services_path%>
+<%= button_to 'Mes réservations', reservations_path, method: :get, class: "btn btn-primary" %> <br>
+<%= button_to 'Mes creneaux', slots_path, method: :get, class: "btn btn-primary" %> <br>
+<%= button_to 'Mes Services', services_path, method: :get, class: "btn btn-primary" %> <br>

@@ -12,8 +12,8 @@
   <tbody>
     <% @slots.each do |slot| %>
       <tr>
-        <td><%= link_to slot.startTime, slot_path(slot) %></td>
-        <td><%= link_to slot.endTime, slot_path(slot) %></td>
+        <td><%= link_to slot.start_time, slot_path(slot) %></td>
+        <td><%= link_to slot.end_time, slot_path(slot) %></td>
         <td><%= link_to slot.status, slot_path(slot) %></td>
       </tr>
     <% end %>

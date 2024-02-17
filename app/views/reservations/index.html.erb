@@ -1,3 +1,5 @@
+
+<div class="container">
 <h1>Mes Réservations</h1>
 
 <table class="table table-bordered">
@@ -12,10 +14,16 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= link_to reservation.slot.startTime, reservation_path(reservation) %></td>
-        <td><%= link_to reservation.slot.endTime, reservation_path(reservation) %></td>
+        <td><%= link_to reservation.slot.start_time, reservation_path(reservation) %></td>
+        <td><%= link_to reservation.slot.end_time, reservation_path(reservation) %></td>
         <td><%= link_to reservation.service.title, reservation_path(reservation) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br>
+
+<%= month_calendar do |date| %>
+  <%= date %>
+<% end %>
+</div>

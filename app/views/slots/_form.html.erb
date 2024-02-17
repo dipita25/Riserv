@@ -1,6 +1,6 @@
-<%= simple_form_for(@slot) do |f| %>
+<%= simple_form_for @slot, data: { controller: 'flatpickr' } do |f| %>
   <%= f.input :user_id, as: :integer, :as => :hidden %>
-  <%= f.input :startTime %>
-  <%= f.input :endTime %>
+  <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+  <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
