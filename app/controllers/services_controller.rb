@@ -1,57 +1,52 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
-
+  # before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   def index
-    @services = Service.all
+
+    # @services = Service.all
   end
-
-  def show
-  end
-
-
-  def new
-    @service = Service.new
-  end
-
-
-  def edit
-  end
-
-
-  def create
-    @service = Service.new(service_params)
-
-    if @service.save
-      redirect_to @service, notice: 'Service was successfully created.'
-    else
-      render :new
-    end
-  end
-
-
-  def update
-    if @service.update(service_params)
-      redirect_to @service, notice: 'Service was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-
-  def destroy
-    @service.destroy
-    redirect_to services_url, notice: 'Service was successfully destroyed.'
-  end
-
-  private
-
-    def set_service
-      @service = Service.find(params[:id])
-    end
-
-
-    def service_params
-      params.require(:service).permit(:title, :description, :price, :id_user)
-    end
 end
+#   def show
+#     # @service = Service.find(params[:id])
+#   end
+
+#   def new
+#     @service = Service.new
+#   end
+
+#   def create
+#     @service = Service.new(service_params)
+#     @service.save
+#     # No need for app/views/restaurants/create.html.erb
+#     redirect_to service_path(@service)
+#   end
+
+#   def edit
+#     # @service = Service.find(params[:id])
+#   end
+
+#   def update
+#     # @service = Service.find(params[:id])
+#     @service.update(service_params)
+#     # No need for app/views/restaurants/update.html.erb
+#     redirect_to service_path(@service)
+#   end
+
+#   def destroy
+#     # @service = Service.find(params[:id])
+#     @service.destroy
+#     # No need for app/views/restaurants/destroy.html.erb
+#     redirect_to services_path, status: :see_other
+#   end
+
+#   private
+
+#   def service_params
+#     params.require(:service).permit(:title, :description, :price)
+#   end
+
+#   def set_service
+#     @service = Service.find(params[:id])
+#   end
+
+# end

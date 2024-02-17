@@ -1,0 +1,8 @@
+<h2><%= @service.title %></h2>
+<p><%= @service.description %></p>
+<p><%= @service.price %></p>
+
+<%= link_to "Delete",
+  service_path(@service),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
