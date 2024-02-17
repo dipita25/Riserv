@@ -3,6 +3,9 @@
 
   ID  = <%= @slot.id %>
 
-  <%= button_to 'Supprimer', slot_destroy_path(id: @slot), method: :delete,
+  <%= button_to 'Supprimer', slot_path(id: @slot), method: :delete,
         data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
 </div>
+
+
+<%= link_to "modifier", edit_slot_path %>

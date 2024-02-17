@@ -1,0 +1,9 @@
+<%= simple_form_for @slot do |f| %>
+    <%= f.input :startTime %>
+    <%= f.input :endTime %>
+
+    <div class="d-flex gap-3">
+    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= link_to "Back to slots", slots_path, class: "btn btn-secondary" %>
+    </div>
+<% end %>

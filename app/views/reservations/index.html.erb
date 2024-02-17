@@ -1,0 +1,21 @@
+<h1>Mes Réservations</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Service</th>
+      <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= link_to reservation.slot.startTime, reservation_path(reservation) %></td>
+        <td><%= link_to reservation.slot.endTime, reservation_path(reservation) %></td>
+        <td><%= link_to reservation.service.title, reservation_path(reservation) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,7 +1,7 @@
 class SlotsController < ApplicationController
 
   def index
-    return Slot.all
+    @slots = Slot.all
   end
 
   def new
@@ -9,13 +9,31 @@ class SlotsController < ApplicationController
   end
 
   def create
-    raise
     @slot = Slot.new(slot_params)
-    redirect_to slots_path
+    if @slot.save
+      raise
+      redirect_to slots(@slot)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
     @slot = Slot.find(params[:id])
+  end
+
+  def edit
+    @slot = Slot.find(params[:id])
+  end
+
+  def update
+    raise
+    @slot = Slot.find(params[:id])
+    if @slot.update(slot_params)
+      redirect_to slots_path, notice: 'Slot was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -23,7 +41,6 @@ class SlotsController < ApplicationController
     @slot.destroy
     redirect_to slots_path, status: :see_other
   end
-
 
   private
 

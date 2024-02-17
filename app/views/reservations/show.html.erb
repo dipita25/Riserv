@@ -1,0 +1,27 @@
+<!-- app/views/reservations/show.html.erb -->
+
+<h1>Détails de la réservation</h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Date de début</th>
+      <td><%= @reservation.slot.startTime %></td>
+    </tr>
+    <tr>
+      <th>Date de fin</th>
+      <td><%= @reservation.slot.endTime %></td>
+    </tr>
+    <tr>
+      <th>Service</th>
+      <td><%= @reservation.service.title %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
+    </tr>
+    <tr>
+      <th>Price</th>
+      <td><%= @reservation.service.price %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
+    </tr>
+    <!-- Ajoutez d'autres détails de réservation au besoin -->
+  </tbody>
+</table>
+
+<%= link_to "Retour", reservations_path, class: "btn btn-secondary" %>

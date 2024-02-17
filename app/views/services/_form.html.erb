@@ -1,0 +1,7 @@
+<%= simple_form_for(@service) do |f| %>
+  <%= f.input :user_id, as: :integer, :as => :hidden %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
