@@ -6,9 +6,12 @@
   <div>Heure de Fin = <%= @slot.start_time %></div>
 
   <div>
-    <%= button_to 'Supprimer', slot_path(id: @slot), method: :delete,
+
+  <%= link_to "Retour", enterprise_slots_path(@enterprise_id), class: "btn btn-secondary" %><br/><br/>
+
+    <%= button_to 'Supprimer', enterprise_slot_path(@enterprise_id), method: :delete,
           data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>
 
-    <%= link_to "modifier", edit_slot_path, class: "btn btn-primary" %>
+    <%= link_to "modifier", edit_enterprise_slot_path, class: "btn btn-primary" %>
   <div>
 </div>

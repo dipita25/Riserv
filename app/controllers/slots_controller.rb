@@ -1,24 +1,26 @@
 class SlotsController < ApplicationController
 
   def index
-    @enterprise = Enterprise.where(user_id: current_user.id)
-    @slots = Slot.where(enterprise_id: @enterprise[0].id)
+    @enterprise = Enterprise.find(params[:enterprise_id])
+    @slots = Slot.where(enterprise_id: params[:enterprise_id])
   end
 
   def new
+    @enterprise_id = params[:enterprise_id]
     @slot = Slot.new
   end
 
   def create
     @slot = Slot.new(slot_params)
     if @slot.save
-      redirect_to slots(@slot)
+      redirect_to enterprise_slots_path
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def show
+    @enterprise_id = params[:enterprise_id]
     @slot = Slot.find(params[:id])
   end
 
@@ -29,8 +31,9 @@ class SlotsController < ApplicationController
 
   def update
     @slot = Slot.find(params[:id])
+    @enterprise_id = params[:enterprise_id]
     if @slot.update(slot_params)
-      redirect_to slots_path, notice: 'Slot was successfully updated.'
+      redirect_to enterprise_slots_path, notice: 'Slot was successfully updated.'
     else
       render :edit
     end
@@ -39,7 +42,7 @@ class SlotsController < ApplicationController
   def destroy
     @slot = Slot.find(params[:id])
     if @slot.destroy
-      redirect_to slots_path, status: :see_other
+      redirect_to enterprise_slots_path, status: :see_other
     else
       render :show, notice: 'the slot cannot be deleted cause it is linked to a reservation'
     end
@@ -48,6 +51,6 @@ class SlotsController < ApplicationController
   private
 
   def slot_params
-    params.require(:slot).permit(:start_time, :end_time, :user_id, :status)
+    params.require(:slot).permit(:start_time, :end_time, :enterprise_id, :status)
   end
 end

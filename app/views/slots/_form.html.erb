@@ -1,5 +1,5 @@
-<%= simple_form_for @slot, data: { controller: 'flatpickr' } do |f| %>
-  <%= f.input :user_id, as: :integer, :as => :hidden %>
+<%= simple_form_for(@slot, url: enterprise_slots_path) do |f| %>
+  <%= f.input :enterprise_id, as: :integer, input_html: { value: @enterprise_id }, as: :hidden %>
   <%= f.input :start_time %>
   <%= f.input :end_time %>
   <%= f.submit class: "btn btn-primary" %>

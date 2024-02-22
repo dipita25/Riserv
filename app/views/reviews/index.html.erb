@@ -1,9 +1,26 @@
 <h1>Mes Reviews</h1>
-<ul>
-  <% @reviews.each do |review| %>
-    <li>
-    <%= @user = User.find(review.user_id) %>
-      <%= link_to @user.email, enterprise_review_path(review) %>
-    </li>
-  <% end %>
-</ul>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Utilisateurs</th>
+      <th>Date</th>
+      <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td>
+          <% @user = User.find(review.user_id) %>
+          <%= link_to @user.email, enterprise_review_path(review.enterprise_id, review) %>
+        </td>
+        <td>
+          <%= link_to review.created_at, enterprise_review_path(review.enterprise_id, review) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "ajouter un avis", new_enterprise_review_path(@enterprise.id), class: "btn btn-primary" %>

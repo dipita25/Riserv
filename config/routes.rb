@@ -18,7 +18,11 @@ Rails.application.routes.draw do
     resources :reviews
     resources :slots
     resources :services
-    resources :reservations
+    resources :reservations do
+      collection do
+        get "/services/:id_service/slots/:id_slot", to: "reservations#reserver", as: :reservation
+      end
+    end
   end
 
 end

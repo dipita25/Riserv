@@ -1,0 +1,6 @@
+<%= simple_form_for(@review, url: enterprise_reviews_path) do |f| %>
+  <%= f.input :enterprise_id, as: :integer, input_html: { value: @enterprise_id }, as: :hidden %>
+  <%= f.input :user_id, as: :integer, input_html: { value: current_user.id }, as: :hidden %>
+  <%= f.input :content %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

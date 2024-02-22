@@ -3,9 +3,9 @@ Mes services</h1>
 
 <ul>
   <% @services.each do |service| %>
-    <li><%= link_to service.title, service_path(service) %></li>
+    <li><%= link_to service.title, enterprise_service_path(@enterprise.id, service) %></li>
   <% end %>
 </ul>
 
 
-<%= link_to "créer un service", new_enterprise_service_path(@enterprise[0]) %>
+<%= link_to "créer un service", new_enterprise_service_path(@enterprise.id), class: "btn btn-primary" %>

@@ -44,6 +44,11 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def reserver
+    raise
+    render :index, notice: 'reservation service has not been configured yet'
+  end
+
   private
 
   def reservation_params

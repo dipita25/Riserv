@@ -1,3 +1,3 @@
 class Service < ApplicationRecord
-  belongs_to :business
+  belongs_to :enterprise
 end

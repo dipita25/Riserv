@@ -13,13 +13,13 @@
   <tbody>
     <% @slots.each do |slot| %>
       <tr>
-        <td><%= link_to slot.start_time, slot_path(slot) %></td>
-        <td><%= link_to slot.end_time, slot_path(slot) %></td>
-        <td><%= link_to slot.status, slot_path(slot) %></td>
-        <td><%= link_to "RESERVER", new_reservation_path(slot, current_user) %></td>
+        <td><%= link_to slot.start_time, enterprise_slot_path(@enterprise, slot) %></td>
+        <td><%= link_to slot.end_time, enterprise_slot_path(@enterprise, slot) %></td>
+        <td><%= link_to slot.status, enterprise_slot_path(@enterprise, slot) %></td>
+        <td><%= link_to "RESERVER", reservation_enterprise_reservations_path(@enterprise, slot, current_user) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to "ajouter un créneau", new_enterprise_slot_path(@enterprise[0]) %>
+<%= link_to "ajouter un créneau", new_enterprise_slot_path(@enterprise) %>

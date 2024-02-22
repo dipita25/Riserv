@@ -1,8 +1,8 @@
 class ServicesController < ApplicationController
 
   def index
-    @enterprise = Enterprise.where(user_id: current_user.id)
-    @services = Service.where(enterprise_id: @enterprise[0].id)
+    @enterprise = Enterprise.find(params[:enterprise_id])
+    @services = Service.where(enterprise_id: @enterprise.id)
   end
 
   def show
@@ -10,22 +10,47 @@ class ServicesController < ApplicationController
   end
 
   def new
+    @enterprise = Enterprise.find(params[:enterprise_id])
+    @enterprise_id = params[:enterprise_id]
     @service = Service.new
   end
 
   def create
-    raise
     @service = Service.new(service_params)
+    @enterprise_id = params[:enterprise_id]
     if @service.save
-      redirect_to services(@service)
+      redirect_to enterprise_services_path(@enterprise_id), notice: 'service created successfully'
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @service = Service.find(params[:id])
+    if @service.destroy
+      redirect_to enterprise_services_path(@service.enterprise_id), notice: 'service deleted successfully'
+    else
+      render :index, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @service = Service.find(params[:id])
+    @enterprise_id = params[:enterprise_id]
+  end
+
+  def update
+    @service = Service.find(params[:id])
+    if @service.update(service_params)
+      redirect_to enterprise_services_path(@service.enterprise_id), notice: 'service updated successfully'
+    else
+      render :edit
     end
   end
 
 
   private
   def service_params
-    params.require(:service).permit(:user_id, :title, :description, :price)
+    params.require(:service).permit(:enterprise_id, :title, :description, :price)
   end
 end
