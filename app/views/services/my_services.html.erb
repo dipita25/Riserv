@@ -1,0 +1,11 @@
+<h1>
+Mes services</h1>
+
+<ul>
+  <% @services.each do |service| %>
+    <li><%= link_to service.title, enterprise_service_path(@enterprise_id, service) %></li>
+  <% end %>
+</ul>
+
+
+<%= link_to "créer un service", new_enterprise_service_path(@enterprise_id), class: "btn btn-primary" %>

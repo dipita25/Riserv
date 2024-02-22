@@ -1,0 +1,28 @@
+<div class="container">
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Nom</th>
+        <td><%= @enterprise.name %></td>
+      </tr>
+      <tr>
+        <th>Adresse</th>
+        <td><%= @enterprise.address %></td>
+      </tr>
+      <!-- Ajoutez d'autres détails de réservation au besoin -->
+    </tbody>
+  </table>
+
+
+  <div>
+    <%= link_to "Retour", enterprises_path, class: "btn btn-secondary" %>
+
+    <%= link_to "Modifier", edit_enterprise_path, class: "btn btn-secondary" %><br/>
+  </div>
+
+
+  <div><%= button_to 'Supprimer', enterprise_path(id: @enterprise), method: :delete,
+            data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %></div>
+
+</div>

@@ -15,14 +15,17 @@ Rails.application.routes.draw do
   # delete "slots/:id", to: "slots#destroy", as: :slot_destroy
 
   resources :enterprises do
+    get "/services/myself", to: "services#my_services", as: :my_services
     resources :reviews
     resources :slots
     resources :services
     resources :reservations do
       collection do
         get "/services/:id_service/slots/:id_slot", to: "reservations#reserver", as: :reservation
+        get :myself
       end
     end
   end
+  get "/recherche/:recherche", to: "pages#recherche", as: :recherche
 
 end

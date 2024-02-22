@@ -12,10 +12,14 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Mon Entreprise", enterprise_path(Enterprise.where(user_id: current_user.id)[0].id), class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Mes Réservations", myself_enterprise_reservations_path(Enterprise.where(user_id: current_user.id)[0].id), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <% @enterprise_id =  Enterprise.where(user_id: current_user.id)[0].id%>
+              <%= link_to "Mes services", enterprise_my_services_path(@enterprise_id), class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

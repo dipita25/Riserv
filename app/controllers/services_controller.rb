@@ -48,9 +48,14 @@ class ServicesController < ApplicationController
     end
   end
 
+  def my_services
+    @enterprise_id = params[:enterprise_id].to_i
+    @services = Service.where(enterprise_id: @enterprise_id)
+  end
+
 
   private
   def service_params
-    params.require(:service).permit(:enterprise_id, :title, :description, :price)
+    params.require(:service).permit(:enterprise_id, :title, :description, :price, :photo)
   end
 end
