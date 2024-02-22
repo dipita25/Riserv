@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   # get "slots/:id/edit", to: "slots#edit"
   # patch "slots/:id", to: "slots#update", as: :slot_update
   # delete "slots/:id", to: "slots#destroy", as: :slot_destroy
-  resources :slots
-  resources :reservations
-  resources :services
+
+  resources :enterprises do
+    resources :reviews
+    resources :slots
+    resources :services
+    resources :reservations
+  end
+
 end

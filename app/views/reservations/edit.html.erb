@@ -1,0 +1,12 @@
+
+<%= simple_form_for @reservation do |f| %>
+  <%= f.input :service_id, collection: @services.map { |s| [s.title, s.id] }, selected: @service.title %>
+
+   <%= f.simple_fields_for @slot do |slot_form| %>
+    <%= slot_form.input :start_time, as: :datetime %>
+    <%= slot_form.input :end_time, as: :datetime %>
+  <% end %>
+
+  <!-- Ajoutez d'autres champs de formulaire au besoin -->
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

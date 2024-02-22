@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_17_092433) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_22_010847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "enterprises", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_enterprises_on_user_id"
+  end
 
   create_table "reservations", force: :cascade do |t|
     t.bigint "service_id", null: false
@@ -26,24 +35,34 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_092433) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enterprise_id"], name: "index_reviews_on_enterprise_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.integer "price"
-    t.bigint "user_id", null: false
+    t.bigint "enterprise_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_services_on_user_id"
+    t.index ["enterprise_id"], name: "index_services_on_enterprise_id"
   end
 
   create_table "slots", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
-    t.bigint "user_id", null: false
+    t.bigint "enterprise_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
-    t.index ["user_id"], name: "index_slots_on_user_id"
+    t.index ["enterprise_id"], name: "index_slots_on_enterprise_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,15 +73,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_092433) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "address"
-    t.boolean "isPrestataire"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "enterprises", "users"
   add_foreign_key "reservations", "services"
   add_foreign_key "reservations", "slots"
   add_foreign_key "reservations", "users"
-  add_foreign_key "services", "users"
-  add_foreign_key "slots", "users"
+  add_foreign_key "reviews", "enterprises"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "services", "users", column: "enterprise_id"
+  add_foreign_key "slots", "users", column: "enterprise_id"
 end

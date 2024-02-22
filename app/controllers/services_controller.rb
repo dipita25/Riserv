@@ -1,7 +1,8 @@
 class ServicesController < ApplicationController
 
   def index
-    @services = Service.all
+    @enterprise = Enterprise.where(user_id: current_user.id)
+    @services = Service.where(enterprise_id: @enterprise[0].id)
   end
 
   def show
@@ -10,5 +11,21 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
+  end
+
+  def create
+    raise
+    @service = Service.new(service_params)
+    if @service.save
+      redirect_to services(@service)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+
+  private
+  def service_params
+    params.require(:service).permit(:user_id, :title, :description, :price)
   end
 end

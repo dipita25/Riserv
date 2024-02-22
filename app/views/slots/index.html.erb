@@ -6,6 +6,7 @@
       <th>Date de début</th>
       <th>Date de fin</th>
       <th>Status</th>
+      <th>Action</th>
       <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
     </tr>
   </thead>
@@ -15,9 +16,10 @@
         <td><%= link_to slot.start_time, slot_path(slot) %></td>
         <td><%= link_to slot.end_time, slot_path(slot) %></td>
         <td><%= link_to slot.status, slot_path(slot) %></td>
+        <td><%= link_to "RESERVER", new_reservation_path(slot, current_user) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to "ajouter un créneau", new_slot_path %>
+<%= link_to "ajouter un créneau", new_enterprise_slot_path(@enterprise[0]) %>

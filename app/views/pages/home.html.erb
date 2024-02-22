@@ -1,5 +1,6 @@
 <h1>Pages#home</h1>
 
-<%= button_to 'Mes réservations', reservations_path, method: :get, class: "btn btn-primary" %> <br>
-<%= button_to 'Mes creneaux', slots_path, method: :get, class: "btn btn-primary" %> <br>
-<%= button_to 'Mes Services', services_path, method: :get, class: "btn btn-primary" %> <br>
+<%= button_to 'Mes réservations', enterprise_reservations_path(@enterprise[0].id), method: :get, class: "btn btn-primary" %> <br>
+<%= button_to 'Mes creneaux', enterprise_slots_path(@enterprise[0].id), method: :get, class: "btn btn-primary" %> <br>
+<%= button_to 'Mes Services', enterprise_services_path(@enterprise[0].id), method: :get, class: "btn btn-primary" %> <br>
+<%= button_to 'Mes Reviews', enterprise_reviews_path(@enterprise[0].id), method: :get, class: "btn btn-primary" %> <br>

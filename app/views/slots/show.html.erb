@@ -1,11 +1,14 @@
 <div class="container">
   <h1>Détail de Créneau</h1>
 
-  ID  = <%= @slot.id %>
 
-  <%= button_to 'Supprimer', slot_path(id: @slot), method: :delete,
-        data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+  <div>Heure de Début = <%= @slot.start_time %></div>
+  <div>Heure de Fin = <%= @slot.start_time %></div>
+
+  <div>
+    <%= button_to 'Supprimer', slot_path(id: @slot), method: :delete,
+          data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>
+
+    <%= link_to "modifier", edit_slot_path, class: "btn btn-primary" %>
+  <div>
 </div>
-
-
-<%= link_to "modifier", edit_slot_path %>
