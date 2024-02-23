@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
 
 
   def myself
+    @enterprise_id = params[:enterprise_id]
     @reservations = Reservation.where(user_id: current_user.id)
   end
 
@@ -10,7 +11,12 @@ class ReservationsController < ApplicationController
   end
 
   def show
+    @reservation_id = params[:id]
+    @enterprise_id = params[:enterprise_id]
     @reservation = Reservation.find(params[:id])
+    @slot = Slot.find(@reservation.slot_id)
+    @service = Service.find(@reservation.service_id)
+    @services = Service.all
   end
 
 
@@ -21,20 +27,23 @@ class ReservationsController < ApplicationController
   end
 
   def edit
-    @reservation = Reservation.find(params[:id])
+    @enterprise_id = params[:enterprise_id].to_i
+    @reservation = Reservation.find(params[:id].to_i)
     @service = Service.find(@reservation.service_id)
-    @services = Service.where(user_id: @reservation.user_id)
+    @services = Service.where(enterprise_id: @enterprise_id)
     @slot = Slot.find(@reservation.slot_id)
-    puts @slot
-    @slots = Slot.where(user_id: @slot.id)
+    @slot = Slot.update(status: 0)
+    @slots = Slot.where(enterprise_id: @enterprise_id, status: 0)
     @user = User.find(@reservation.user_id)
+
   end
 
   def update
     @reservation = Reservation.find(params[:id])
     if @reservation.update(reservation_params)
-      raise
-      redirect_to @reservation
+      @slot = Slot.find(@reservation.slot_id)
+      @slot.update(status: 1)
+      redirect_to myself_enterprise_reservations_path(params[:enterprise_id].to_i), notice: 'Réservation was successfully updated.'
     else
       render :edit
     end
@@ -43,15 +52,25 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     if @reservation.destroy
-      redirect_to reservations_path, status: :see_other
+      redirect_to myself_enterprise_reservations_path(params[:enterprise_id].to_i), notice: 'the reservation has been deleted'
     else
-      render :show, notice: 'the reservation has been deleted'
+      render :show, notice: 'something went wrong'
     end
   end
 
   def reserver
-    raise
-    render :index, notice: 'reservation service has not been configured yet'
+    @reservation = Reservation.new
+    @reservation.service_id = params[:service_id]
+    @reservation.slot_id = params[:slot_id]
+    @reservation.user_id = current_user.id
+    @reservation.status = true
+    if @reservation.save
+      @slot = Slot.find(@reservation.slot_id)
+      @slot.update(status: 1)
+      redirect_to myself_enterprise_reservations_path(Enterprise.where(user_id: current_user.id)[0].id), notice: 'reservation has been successfully created'
+    else
+      render :myself, notice: 'something went wrong'
+    end
   end
 
   private

@@ -16,12 +16,13 @@ Rails.application.routes.draw do
 
   resources :enterprises do
     get "/services/myself", to: "services#my_services", as: :my_services
+    get "/services/:service_id/slots", to: "slots#get_slots", as: :get_slots
     resources :reviews
     resources :slots
     resources :services
     resources :reservations do
       collection do
-        get "/services/:id_service/slots/:id_slot", to: "reservations#reserver", as: :reservation
+        get "/services/:service_id/slots/:slot_id", to: "reservations#reserver", as: :reserver
         get :myself
       end
     end

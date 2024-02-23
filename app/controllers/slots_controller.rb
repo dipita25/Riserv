@@ -48,6 +48,11 @@ class SlotsController < ApplicationController
     end
   end
 
+  def get_slots
+    @slots = Slot.where(enterprise_id: params[:enterprise_id])
+    @service_id = params[:service_id]
+  end
+
   private
 
   def slot_params

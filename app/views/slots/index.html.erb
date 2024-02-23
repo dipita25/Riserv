@@ -1,4 +1,4 @@
-<p> Page index des slots</p>
+
 
 <table class="table table-bordered">
   <thead>
@@ -13,13 +13,13 @@
   <tbody>
     <% @slots.each do |slot| %>
       <tr>
-        <td><%= link_to slot.start_time, enterprise_slot_path(@enterprise, slot) %></td>
-        <td><%= link_to slot.end_time, enterprise_slot_path(@enterprise, slot) %></td>
+        <td><%= link_to slot.start_time.strftime("%d %B %Y - %H:%M:%S"), enterprise_slot_path(@enterprise, slot) %></td>
+        <td><%= link_to slot.end_time.strftime("%d %B %Y - %H:%M:%S"), enterprise_slot_path(@enterprise, slot) %></td>
         <td><%= link_to slot.status, enterprise_slot_path(@enterprise, slot) %></td>
-        <td><%= link_to "RESERVER", reservation_enterprise_reservations_path(@enterprise, slot, current_user) %></td>
+        <td><%= link_to "RESERVER", reserver_enterprise_reservations_path(@enterprise, slot, current_user) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to "ajouter un créneau", new_enterprise_slot_path(@enterprise) %>
+<%= link_to "ajouter un créneau", new_enterprise_slot_path(@enterprise), class: "btn btn-secondary" %>

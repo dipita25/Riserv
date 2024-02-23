@@ -1,0 +1,21 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Status</th>
+      <th>Action</th>
+      <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @slots.each do |slot| %>
+      <tr>
+        <td><%= slot.start_time %></td>
+        <td><%= slot.end_time %></td>
+        <td><%= slot.status %></td>
+        <td><%= link_to "RESERVER", reserver_enterprise_reservations_path(slot.enterprise_id, @service_id, slot.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

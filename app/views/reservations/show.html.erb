@@ -6,11 +6,11 @@
   <tbody>
     <tr>
       <th>Date de début</th>
-      <td><%= @reservation.slot.start_time %></td>
+      <td><%= @reservation.slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></td>
     </tr>
     <tr>
       <th>Date de fin</th>
-      <td><%= @reservation.slot.end_time %></td>
+      <td><%= @reservation.slot.end_time.strftime("%d %B %Y - %H:%M:%S") %></td>
     </tr>
     <tr>
       <th>Service</th>
@@ -20,13 +20,17 @@
       <th>Price</th>
       <td><%= @reservation.service.price %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
     </tr>
+    <tr>
+      <th>Statut</th>
+      <td><%= @reservation.status %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
+    </tr>
     <!-- Ajoutez d'autres détails de réservation au besoin -->
   </tbody>
 </table>
 
-<%= link_to "Retour", reservations_path, class: "btn btn-secondary" %>
+<%= link_to "Retour", myself_enterprise_reservations_path(@enterprise_id), class: "btn btn-secondary" %>
 
-<%= link_to "Modifier", edit_reservation_path, class: "btn btn-secondary" %>
+<%= link_to "Modifier", edit_enterprise_reservation_path(@enterprise_id, @reservation), class: "btn btn-secondary" %>
 
-<%= button_to 'Supprimer', reservation_path(id: @reservation), method: :delete,
+<%= button_to 'Annuler', enterprise_reservation_path(@enterprise_id, @reservation), method: :delete,
           data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>

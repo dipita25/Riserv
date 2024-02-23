@@ -2,8 +2,9 @@
   <h1>Détail de Créneau</h1>
 
 
-  <div>Heure de Début = <%= @slot.start_time %></div>
-  <div>Heure de Fin = <%= @slot.start_time %></div>
+  <div>Heure de Début = <%= @slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></div>
+  <div>Heure de Fin = <%= @slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></div>
+  <div>Statut = <%= @slot.status %></div>
 
   <div>
 

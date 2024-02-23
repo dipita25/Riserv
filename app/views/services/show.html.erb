@@ -26,4 +26,5 @@
   <%= button_to 'Supprimer', enterprise_service_path(@service.enterprise_id, @service), method: :delete,
         data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>
 <%= link_to "Retour", enterprise_services_path(@service.enterprise_id), class: "btn btn-secondary" %><br/><br/>
-<%= link_to "MODIFIER", edit_enterprise_service_path(@service.enterprise_id, @service), class: "btn btn-secondary" %>
+<%= link_to "MODIFIER", edit_enterprise_service_path(@service.enterprise_id, @service), class: "btn btn-secondary" %><br/><br/>
+<%= link_to "CHOISIR", enterprise_get_slots_path(@service.enterprise_id, @service), class: "btn btn-secondary" %>

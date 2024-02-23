@@ -17,6 +17,9 @@
           <li class="nav-item active">
             <%= link_to "Mes Réservations", myself_enterprise_reservations_path(Enterprise.where(user_id: current_user.id)[0].id), class: "nav-link" %>
           </li>
+          <li class="nav-item active">
+            <%= link_to "Mes Créneaux", enterprise_slots_path(Enterprise.where(user_id: current_user.id)[0].id), class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <% @enterprise_id =  Enterprise.where(user_id: current_user.id)[0].id%>
               <%= link_to "Mes services", enterprise_my_services_path(@enterprise_id), class: "nav-link" %>
