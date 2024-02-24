@@ -67,10 +67,15 @@ class ReservationsController < ApplicationController
     if @reservation.save
       @slot = Slot.find(@reservation.slot_id)
       @slot.update(status: 1)
-      redirect_to myself_enterprise_reservations_path(Enterprise.where(user_id: current_user.id)[0].id), notice: 'reservation has been successfully created'
+      redirect_to users_reservations_path, notice: 'reservation has been successfully created'
     else
       render :myself, notice: 'something went wrong'
     end
+  end
+
+  def my_reservations
+    @reservations = Reservation.where(user_id: current_user.id)
+
   end
 
   private

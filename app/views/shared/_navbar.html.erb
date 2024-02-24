@@ -36,6 +36,17 @@
               </div>
             </li>
           <% end %>
+          <% if Enterprise.where(user_id: current_user.id).length == 0 %>
+            <li class="nav-item">
+              <%= link_to "Mes Favoris", my_favorites_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Mes Réservations", users_reservations_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Créer une entreprise", new_enterprise_path, class: "nav-link" %>
+            </li>
+          <% end %>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

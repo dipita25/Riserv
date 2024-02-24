@@ -6,6 +6,7 @@ class ServicesController < ApplicationController
   end
 
   def show
+    @enterprise = Enterprise.find(params[:enterprise_id])
     @service = Service.find(params[:id])
   end
 
@@ -53,7 +54,7 @@ class ServicesController < ApplicationController
   end
 
   def my_services
-    @enterprise_id = params[:enterprise_id].to_i
+    @enterprise = Enterprise.find(params[:enterprise_id].to_i)
     @services = Service.where(enterprise_id: @enterprise_id)
   end
 

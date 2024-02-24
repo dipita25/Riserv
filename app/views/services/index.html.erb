@@ -1,11 +1,31 @@
 <div class="container">
+  <div class="row mt-2">
+    <div class="col-md-8">
+      <h1>Services proposés par "<%= @enterprise.name %>"</h1>
+    </div>
+    <div class="col-md-4 text-end">
+      <% if @enterprise.user_id == current_user.id %>
+        <%= link_to "Ajouter un service", new_enterprise_service_path(@enterprise.id), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 
-  <ul>
+  <div class="row">
     <% @services.each do |service| %>
-      <li><%= link_to service.title, enterprise_service_path(@enterprise.id, service) %></li>
-    <% end %>
-  </ul>
+      <div class="col-md-3">
+        <div class="card mt-3" style="width: 18rem;">
+          <%= cl_image_tag(service.photo.key, width: 400, height: 300, crop: :fit, class: "card-img-top game-image") %>
+          <div class="card-body">
+            <h5 class="card-title"><%= service.title %></h5>
+            <p class="card-text"><%= service.description %>
+            </p>
+
+            <%= link_to "Détails", enterprise_service_path(@enterprise.id, service), class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
+    <%end %>
+  </div>
 
 
-  <%= link_to "créer un service", new_enterprise_service_path(@enterprise.id), class: "btn btn-primary" %>
 </div>

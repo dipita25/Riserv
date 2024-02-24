@@ -1,5 +1,5 @@
 <div class="container">
-
+  <h1>Mes Favoris</h1>
 
   <div class="row">
     <% @enterprises.each do |enterprise| %>
@@ -13,13 +13,21 @@
             </p>
 
             <%= link_to "consulter les services", enterprise_services_path(enterprise.id), class: "btn btn-primary"%>
-            <%= link_to "Reviews", enterprise_reviews_path(enterprise.id), class: "btn btn-primary"%>
+            <%= link_to "Reviews", enterprise_reviews_path(enterprise.id), class: "btn btn-primary mt-2"%>
+            <%= link_to "Retirer des favoris", enterprise_remove_to_favorites_path(enterprise.id), class: "btn btn-primary mt-2"%>
           </div>
         </div>
       </div>
     <%end %>
   </div>
+
+
+
+
+
+
 </div>
+
 
 <style>
   .enterprise-image {

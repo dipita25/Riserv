@@ -27,16 +27,22 @@ users = User.create([
 puts "users bien créés"
 
 puts "creation des enterprises"
-enterprises = Enterprise.create([
-  { name: 'Rajiv coiffure', address: 'Adresse 1', user_id: users.first.id },
-  { name: 'Drake shopping', address: 'Adresse 2', user_id: users.second.id }
-])
+
+enterprise1 = { name: 'Rajiv coiffure', address: 'Adresse 1', user_id: users.first.id }
+enterprise1 = Enterprise.create(enterprise1)
+image_url_enterprise1 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1706148090/samples/imagecon-group.jpg"
+enterprise1.photo.attach(io: URI.open(image_url_enterprise1), filename: "imagecon-group.jpg")
+
+enterprise2 = { name: 'Drake shopping', address: 'Adresse 2', user_id: users.second.id }
+enterprise2 = Enterprise.create(enterprise2)
+image_url_enterprise2 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1706148091/samples/cloudinary-group.jpg"
+enterprise2.photo.attach(io: URI.open(image_url_enterprise2), filename: "cloudinary-group.jpg")
 puts "enterprises bien crées"
 
 puts "creation des slots"
 slots = Slot.create([
-  { start_time: DateTime.now, end_time: DateTime.now + 1.hour, enterprise_id: enterprises.first.id, status: 1 },
-  { start_time: DateTime.now + 2.hours, end_time: DateTime.now + 3.hours, enterprise_id: enterprises.first.id, status: 1 }
+  { start_time: DateTime.now, end_time: DateTime.now + 1.hour, enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.now + 2.hours, end_time: DateTime.now + 3.hours, enterprise_id: enterprise1.id, status: 1 }
 ])
 puts "slots bien créés "
 
@@ -47,12 +53,12 @@ puts "slots bien créés "
 # ])
 
 puts "creation des services"
-service1 = { title: 'coiffure homme', description: 'Description du service 1', enterprise_id: enterprises.first.id, price: 3500 }
+service1 = { title: 'coiffure homme', description: 'Description du service 1', enterprise_id: enterprise1.id, price: 3500 }
 service1 = Service.create(service1)
 image_url1 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/homme_dqtqp4.jpg"
 service1.photo.attach(io: URI.open(image_url1), filename: "homme_dqtqp4.jpg")
 
-service2 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprises.second.id, price: 2500 }
+service2 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise2.id, price: 2500 }
 service2 = Service.create(service2)
 image_url2 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
 service2.photo.attach(io: URI.open(image_url2), filename: "femme_h9xnkn.jpg")
@@ -67,7 +73,7 @@ puts "reservations bien créees"
 
 puts "creation des reviews"
 reviews = Review.create([
-  { content: 'Avis sur l\'entreprise 1', user_id: users.first.id, enterprise_id: enterprises.first.id },
-  { content: 'Avis sur l\'entreprise 2', user_id: users.second.id, enterprise_id: enterprises.second.id }
+  { content: 'Avis sur l\'entreprise 1', user_id: users.first.id, enterprise_id: enterprise1.id },
+  { content: 'Avis sur l\'entreprise 2', user_id: users.second.id, enterprise_id: enterprise2.id }
 ])
 puts "reviews bien créées"

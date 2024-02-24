@@ -1,31 +1,33 @@
 <!-- app/views/reservations/show.html.erb -->
 <div class="container">
-  <h1>Détails du Service</h1>
 
-  <table class="table">
-    <tbody>
-      <tr>
-        <th>Title</th>
-        <td><%= @service.title %></td>
-      </tr>
-      <tr>
-        <th>Description</th>
-        <td><%= @service.description %></td>
-      </tr>
-      <tr>
-        <th>Price</th>
-        <td><%= @service.price %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
-      </tr>
-      <!-- Ajoutez d'autres détails de réservation au besoin -->
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-6 mt-3">
+      <h2>Detail du Service </h2>
 
-        <%= cl_image_tag(@service.photo.key,
-          width: 400, height: 300, crop: :fit) %>
+      <p>Titre : <strong><%= @service.title %></strong></p>
+      <p>Prix : <strong><%= @service.price %></strong></p>
+      <p>Description : <strong><%= @service.description %></strong></p>
 
-    <%= button_to 'Supprimer', enterprise_service_path(@service.enterprise_id, @service), method: :delete,
-          data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>
-  <%= link_to "Retour", enterprise_services_path(@service.enterprise_id), class: "btn btn-secondary" %><br/><br/>
-  <%= link_to "MODIFIER", edit_enterprise_service_path(@service.enterprise_id, @service), class: "btn btn-secondary" %><br/><br/>
-  <%= link_to "CHOISIR", enterprise_get_slots_path(@service.enterprise_id, @service), class: "btn btn-secondary" %>
+      <div class="row">
+        <div class="col-md-2"><%= link_to "Réserver", enterprise_get_slots_path(@service.enterprise_id, @service), class: "btn btn-primary" %></div>
+        <div class="col-md-2">
+          <% if @enterprise.user_id == current_user.id %>
+            <p> <%= link_to "MODIFIER", edit_enterprise_service_path(@service.enterprise_id, @service), class: "btn btn-primary" %></p>
+
+            <p>  <%= button_to 'Supprimer', enterprise_service_path(@service.enterprise_id, @service), method: :delete,
+                data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %></p>
+          <% end %>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+
+    </div>
+
+    <div class="col-6 mt-5">
+      <%= cl_image_tag(@service.photo.key,
+        width: 500, height: 350, crop: :fit) %>
+    </div>
+  </div>
+
 </div>

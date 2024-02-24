@@ -28,10 +28,11 @@
     </tbody>
   </table>
 
-  <%= link_to "Retour", myself_enterprise_reservations_path(@enterprise_id), class: "btn btn-secondary" %>
+  <% if @reservation.user_id == current_user.id %>
 
-  <%= link_to "Modifier", edit_enterprise_reservation_path(@enterprise_id, @reservation), class: "btn btn-secondary" %>
+    <%= link_to "Modifier", edit_enterprise_reservation_path(@enterprise_id, @reservation), class: "btn btn-secondary" %>
 
-  <%= button_to 'Annuler', enterprise_reservation_path(@enterprise_id, @reservation), method: :delete,
-            data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>
+    <%= button_to 'Annuler', enterprise_reservation_path(@enterprise_id, @reservation), method: :delete,
+              data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>
+  <% end %>
 </div>

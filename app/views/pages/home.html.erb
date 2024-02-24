@@ -29,6 +29,9 @@
     var url = document.querySelector("[data-url]").getAttribute("data-url");
     // Récupérer la valeur du champ de texte
     var searchText = document.getElementById('searchInput').value;
+    if(searchText === ""){
+      searchText = "all"
+    }
     // Modifier l'URL avec la valeur saisie
     var searchUrl = url + encodeURIComponent(searchText);
     // Rediriger vers la nouvelle URL

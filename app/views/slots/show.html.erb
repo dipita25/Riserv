@@ -8,8 +8,6 @@
 
   <div>
 
-  <%= link_to "Retour", enterprise_slots_path(@enterprise_id), class: "btn btn-secondary" %><br/><br/>
-
     <%= button_to 'Supprimer', enterprise_slot_path(@enterprise_id), method: :delete,
           data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>
 

@@ -7,8 +7,12 @@ class PagesController < ApplicationController
 
   def recherche
     @text = params[:recherche]
-    @services = Service.where("title LIKE ?", "%#{@text}%")
-    @enterprises = Enterprise.joins(:services).where(services: { id: @services.map(&:id) }).distinct
-
+    if @text == "all"
+      @text = ""
+      @enterprises = Enterprise.all
+    else
+      @services = Service.where("title LIKE ?", "%#{@text}%")
+      @enterprises = Enterprise.joins(:services).where(services: { id: @services.map(&:id) }).distinct
+    end
   end
 end

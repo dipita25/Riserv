@@ -37,26 +37,6 @@ class EnterprisesController < ApplicationController
 
   def destroy
     @enterprise = Enterprise.find(params[:id])
-    @reviews = Review.where(enterprise_id: @enterprise.id)
-    @services = Service.where(enterprise_id: @enterprise.id)
-    @slots = Slot.where(enterprise_id: @enterprise.id)
-
-    @slots.each do |slot|
-      @reservations = Reservation.where(slot_id: slot.id)
-      @reservations.each do |reservation|
-        reservation.destroy
-      end
-      slot.destroy
-    end
-
-    @services.each do |service|
-      service.destroy
-    end
-
-    @reviews.each do |review|
-      review.destroy
-    end
-
     if @enterprise.destroy
       redirect_to enterprises_path, notice: 'enterprise deleted successfully'
     else
@@ -64,9 +44,31 @@ class EnterprisesController < ApplicationController
     end
   end
 
+  def add_to_favorites
+    @enterprise_id = params[:enterprise_id]
+
+    if Favorite.where(enterprise_id: @enterprise_id, user_id: current_user.id).length == 0
+      @favorite = Favorite.new({user_id: current_user.id, enterprise_id: @enterprise_id})
+      if @favorite.save
+        redirect_to root_path, notice: 'enterprise successfully added to favorites'
+      end
+    else
+      redirect_to root_path, notice: 'unable to add to favorites'
+    end
+
+  end
+
+  def remove_to_favorites
+    @enterprise_id = params[:enterprise_id]
+    @favorite = Favorite.where(user_id: current_user.id, enterprise_id: @enterprise_id).first
+    if @favorite.destroy
+      redirect_to root_path, notice: 'enterprise successfully removed to favorites'
+    end
+  end
+
   private
 
   def params_enterprise
-    params.require(:enterprise).permit(:user_id, :name, :address)
+    params.require(:enterprise).permit(:user_id, :name, :address, :photo)
   end
 end

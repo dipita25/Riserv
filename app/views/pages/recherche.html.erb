@@ -1,24 +1,45 @@
 <div class="container">
-  <h1>Résultats de recherche pour "<%= @text %>"</h1>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Adresse</th>
-        <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
-      </tr>
-    </thead>
-    <tbody>
-      <% @enterprises.each do |enterprise| %>
-        <tr>
-          <td>
-            <%= link_to enterprise.name, enterprise_services_path(enterprise.id) %>
-          </td>
-          <td>
-            <%= link_to enterprise.address, enterprise_services_path(enterprise.id) %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <h1>Résultats de recherche pour "  <%= @text %>  "</h1>
+
+  <div class="row">
+    <% @enterprises.each do |enterprise| %>
+      <div class="col-md-3">
+        <div class="card mt-3" style="width: 18rem;">
+          <%= cl_image_tag(enterprise.photo.key, width: 400, height: 300, crop: :fit, class: "card-img-top enterprise-image") %>
+          <div class="card-body">
+            <h5 class="card-title"><%= enterprise.name %></h5>
+            <p class="card-text">Some quick example text to build on the card title and
+              make up the bulk of the card's content.
+            </p>
+
+            <%= link_to "consulter les services", enterprise_services_path(enterprise.id), class: "btn btn-primary"%>
+            <%= link_to "Reviews", enterprise_reviews_path(enterprise.id), class: "btn btn-primary mt-2"%>
+            <% if Favorite.where(enterprise_id: enterprise.id, user_id: current_user.id).length == 0 %>
+              <%= link_to "Ajouter aux favoris", enterprise_add_to_favorites_path(enterprise.id), class: "btn btn-primary mt-2"%>
+            <% end %>
+
+            <% if Favorite.where(enterprise_id: enterprise.id, user_id: current_user.id).length > 0 %>
+              <%= link_to "Retirer des favoris", enterprise_remove_to_favorites_path(enterprise.id), class: "btn btn-primary mt-2"%>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    <%end %>
+  </div>
+
+
+
+
+
+
 </div>
+
+
+<style>
+  .enterprise-image {
+    width: 287px;
+    height: 200px;
+    object-fit: fit; /* ou `object-fit: contain;` selon le rendu souhaité */
+  }
+</style>
