@@ -37,6 +37,26 @@ class EnterprisesController < ApplicationController
 
   def destroy
     @enterprise = Enterprise.find(params[:id])
+    @reviews = Review.where(enterprise_id: @enterprise.id)
+    @services = Service.where(enterprise_id: @enterprise.id)
+    @slots = Slot.where(enterprise_id: @enterprise.id)
+
+    @slots.each do |slot|
+      @reservations = Reservation.where(slot_id: slot.id)
+      @reservations.each do |reservation|
+        reservation.destroy
+      end
+      slot.destroy
+    end
+
+    @services.each do |service|
+      service.destroy
+    end
+
+    @reviews.each do |review|
+      review.destroy
+    end
+
     if @enterprise.destroy
       redirect_to enterprises_path, notice: 'enterprise deleted successfully'
     else

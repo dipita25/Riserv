@@ -11,29 +11,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Mon Entreprise", enterprise_path(Enterprise.where(user_id: current_user.id)[0].id), class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Mes Réservations", myself_enterprise_reservations_path(Enterprise.where(user_id: current_user.id)[0].id), class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Mes Créneaux", enterprise_slots_path(Enterprise.where(user_id: current_user.id)[0].id), class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <% @enterprise_id =  Enterprise.where(user_id: current_user.id)[0].id%>
-              <%= link_to "Mes services", enterprise_my_services_path(@enterprise_id), class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
+          <% if Enterprise.where(user_id: current_user.id).length > 0 %>
+            <li class="nav-item active">
+              <%= link_to "Mon Entreprise", enterprise_path(Enterprise.where(user_id: current_user.id)[0].id), class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Mes Réservations", myself_enterprise_reservations_path(Enterprise.where(user_id: current_user.id)[0].id), class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Mes Créneaux", enterprise_slots_path(Enterprise.where(user_id: current_user.id)[0].id), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <% @enterprise_id =  Enterprise.where(user_id: current_user.id)[0].id%>
+                <%= link_to "Mes services", enterprise_my_services_path(@enterprise_id), class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown">
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+            </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Action", "#", class: "dropdown-item" %>
+                <%= link_to "Another action", "#", class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              </div>
+            </li>
+          <% end %>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

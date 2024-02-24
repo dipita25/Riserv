@@ -1,21 +1,23 @@
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Adresse</th>
-      <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
-    </tr>
-  </thead>
-  <tbody>
-    <% @enterprises.each do |enterprise| %>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
       <tr>
-        <td>
-          <%= link_to enterprise.name, enterprise_path(enterprise.id) %>
-        </td>
-        <td>
-          <%= link_to enterprise.address, enterprise_path(enterprise.id) %>
-        </td>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @enterprises.each do |enterprise| %>
+        <tr>
+          <td>
+            <%= link_to enterprise.name, enterprise_path(enterprise.id) %>
+          </td>
+          <td>
+            <%= link_to enterprise.address, enterprise_path(enterprise.id) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

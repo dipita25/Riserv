@@ -41,6 +41,10 @@ class SlotsController < ApplicationController
 
   def destroy
     @slot = Slot.find(params[:id])
+    @reservations = Reservation.where(slot_id: @slot.id)
+    @reservations.each do |reservation|
+      reservation.destroy
+    end
     if @slot.destroy
       redirect_to enterprise_slots_path, status: :see_other
     else

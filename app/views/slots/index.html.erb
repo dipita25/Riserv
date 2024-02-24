@@ -1,25 +1,26 @@
 
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Date de début</th>
-      <th>Date de fin</th>
-      <th>Status</th>
-      <th>Action</th>
-      <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
-    </tr>
-  </thead>
-  <tbody>
-    <% @slots.each do |slot| %>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
       <tr>
-        <td><%= link_to slot.start_time.strftime("%d %B %Y - %H:%M:%S"), enterprise_slot_path(@enterprise, slot) %></td>
-        <td><%= link_to slot.end_time.strftime("%d %B %Y - %H:%M:%S"), enterprise_slot_path(@enterprise, slot) %></td>
-        <td><%= link_to slot.status, enterprise_slot_path(@enterprise, slot) %></td>
-        <td><%= link_to "RESERVER", reserver_enterprise_reservations_path(@enterprise, slot, current_user) %></td>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>Status</th>
+        <th>Action</th>
+        <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @slots.each do |slot| %>
+        <tr>
+          <td><%= link_to slot.start_time.strftime("%d %B %Y - %H:%M:%S"), enterprise_slot_path(@enterprise, slot) %></td>
+          <td><%= link_to slot.end_time.strftime("%d %B %Y - %H:%M:%S"), enterprise_slot_path(@enterprise, slot) %></td>
+          <td><%= link_to slot.status, enterprise_slot_path(@enterprise, slot) %></td>
+          <td><%= link_to "RESERVER", reserver_enterprise_reservations_path(@enterprise, slot, current_user) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to "ajouter un créneau", new_enterprise_slot_path(@enterprise), class: "btn btn-secondary" %>
+  <%= link_to "ajouter un créneau", new_enterprise_slot_path(@enterprise), class: "btn btn-secondary" %>
+</div>

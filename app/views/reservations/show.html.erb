@@ -1,36 +1,37 @@
 <!-- app/views/reservations/show.html.erb -->
+<div class="container">
+  <h1>Détails de la réservation</h1>
 
-<h1>Détails de la réservation</h1>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Date de début</th>
+        <td><%= @reservation.slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></td>
+      </tr>
+      <tr>
+        <th>Date de fin</th>
+        <td><%= @reservation.slot.end_time.strftime("%d %B %Y - %H:%M:%S") %></td>
+      </tr>
+      <tr>
+        <th>Service</th>
+        <td><%= @reservation.service.title %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
+      </tr>
+      <tr>
+        <th>Price</th>
+        <td><%= @reservation.service.price %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
+      </tr>
+      <tr>
+        <th>Statut</th>
+        <td><%= @reservation.status %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
+      </tr>
+      <!-- Ajoutez d'autres détails de réservation au besoin -->
+    </tbody>
+  </table>
 
-<table class="table">
-  <tbody>
-    <tr>
-      <th>Date de début</th>
-      <td><%= @reservation.slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></td>
-    </tr>
-    <tr>
-      <th>Date de fin</th>
-      <td><%= @reservation.slot.end_time.strftime("%d %B %Y - %H:%M:%S") %></td>
-    </tr>
-    <tr>
-      <th>Service</th>
-      <td><%= @reservation.service.title %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
-    </tr>
-    <tr>
-      <th>Price</th>
-      <td><%= @reservation.service.price %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
-    </tr>
-    <tr>
-      <th>Statut</th>
-      <td><%= @reservation.status %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
-    </tr>
-    <!-- Ajoutez d'autres détails de réservation au besoin -->
-  </tbody>
-</table>
+  <%= link_to "Retour", myself_enterprise_reservations_path(@enterprise_id), class: "btn btn-secondary" %>
 
-<%= link_to "Retour", myself_enterprise_reservations_path(@enterprise_id), class: "btn btn-secondary" %>
+  <%= link_to "Modifier", edit_enterprise_reservation_path(@enterprise_id, @reservation), class: "btn btn-secondary" %>
 
-<%= link_to "Modifier", edit_enterprise_reservation_path(@enterprise_id, @reservation), class: "btn btn-secondary" %>
-
-<%= button_to 'Annuler', enterprise_reservation_path(@enterprise_id, @reservation), method: :delete,
-          data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>
+  <%= button_to 'Annuler', enterprise_reservation_path(@enterprise_id, @reservation), method: :delete,
+            data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>
+</div>

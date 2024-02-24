@@ -27,6 +27,10 @@ class ServicesController < ApplicationController
 
   def destroy
     @service = Service.find(params[:id])
+    @reservations = Reservation.where(service_id: @service.id)
+    @reservations.each do |reservation|
+      reservation.destroy
+    end
     if @service.destroy
       redirect_to enterprise_services_path(@service.enterprise_id), notice: 'service deleted successfully'
     else
