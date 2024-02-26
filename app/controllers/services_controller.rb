@@ -3,6 +3,7 @@ class ServicesController < ApplicationController
   def index
     @enterprise = Enterprise.find(params[:enterprise_id])
     @services = Service.where(enterprise_id: @enterprise.id)
+    @reviews = Review.where(enterprise_id: @enterprise.id)
   end
 
   def show

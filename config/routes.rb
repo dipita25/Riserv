@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # patch "slots/:id", to: "slots#update", as: :slot_update
   # delete "slots/:id", to: "slots#destroy", as: :slot_destroy
 
+  get "/switch_profile", to: "application#application", as: :switch_profile
   get "/reservations/", to: "reservations#my_reservations", as: :users_reservations
   get "/favorites", to: "favorites#my_favorites", as: :my_favorites
 

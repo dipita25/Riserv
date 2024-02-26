@@ -38,7 +38,7 @@ class EnterprisesController < ApplicationController
   def destroy
     @enterprise = Enterprise.find(params[:id])
     if @enterprise.destroy
-      redirect_to enterprises_path, notice: 'enterprise deleted successfully'
+      redirect_to root_path, notice: 'enterprise deleted successfully'
     else
       render :show, status: :unprocessable_entity
     end

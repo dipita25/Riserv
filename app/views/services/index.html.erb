@@ -27,5 +27,22 @@
     <%end %>
   </div>
 
+  <div class="row mt-5">
+    <h1>Reviews</h1>
+
+    <% @reviews.each do |review| %>
+      <div class="col-md-3">
+        <div class="card mt-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= User.find(id: review.user_id).email %></h5>
+            <p class="card-text"><%= review.content %>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    <%end %>
+  </div>
+
 
 </div>
