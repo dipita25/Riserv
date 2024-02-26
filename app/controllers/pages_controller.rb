@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-
   end
 
   def recherche
@@ -15,5 +14,17 @@ class PagesController < ApplicationController
       @enterprises = Enterprise.joins(:services).where(services: { id: @services.map(&:id) }).distinct
 
     end
+
+
+    @key = ENV['MAPBOX_API_KEY']
+
+    @markers = @enterprises.geocoded.map do |enterprise|
+      {
+        lat: enterprise.latitude,
+        lng: enterprise.longitude
+      }
+    end
+
+
   end
 end
