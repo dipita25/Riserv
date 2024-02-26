@@ -33,7 +33,7 @@ enterprise1 = Enterprise.create(enterprise1)
 image_url_enterprise1 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1706148090/samples/imagecon-group.jpg"
 enterprise1.photo.attach(io: URI.open(image_url_enterprise1), filename: "imagecon-group.jpg")
 
-enterprise2 = { name: 'Drake shopping', address: 'Adresse 2', user_id: users.second.id }
+enterprise2 = { name: 'Drake shopping', address: 'Adresse 2', user_id: users.first.id }
 enterprise2 = Enterprise.create(enterprise2)
 image_url_enterprise2 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1706148091/samples/cloudinary-group.jpg"
 enterprise2.photo.attach(io: URI.open(image_url_enterprise2), filename: "cloudinary-group.jpg")

@@ -13,6 +13,7 @@ class PagesController < ApplicationController
     else
       @services = Service.where("title LIKE ?", "%#{@text}%")
       @enterprises = Enterprise.joins(:services).where(services: { id: @services.map(&:id) }).distinct
+
     end
   end
 end

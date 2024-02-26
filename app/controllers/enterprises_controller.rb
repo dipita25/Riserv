@@ -7,6 +7,7 @@ class EnterprisesController < ApplicationController
 
   def create
     @enterprise = Enterprise.new(params_enterprise)
+
     if @enterprise.save
       redirect_to enterprise_path(@enterprise), notice: 'enterprise created successfully'
     else
