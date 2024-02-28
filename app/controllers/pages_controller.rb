@@ -25,6 +25,13 @@ class PagesController < ApplicationController
       }
     end
 
+    location = request.location
+    @latitude = location.latitude
+    @longitude = location.longitude
+
+    puts "##########################################"
+    puts location
+    puts "###########################"
 
   end
 end

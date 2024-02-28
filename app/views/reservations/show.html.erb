@@ -1,42 +1,30 @@
 <!-- app/views/reservations/show.html.erb -->
 <div class="container">
-  <h1>Détails de la réservation</h1>
+  <div class="row">
+    <div class="col-4 mt-3">
+      <h1>Détails de la réservation</h1>
 
-  <table class="table">
-    <tbody>
-      <tr>
-        <th>Date de début</th>
-        <td><%= @reservation.slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></td>
-      </tr>
-      <tr>
-        <th>Date de fin</th>
-        <td><%= @reservation.slot.end_time.strftime("%d %B %Y - %H:%M:%S") %></td>
-      </tr>
-      <tr>
-        <th>Service</th>
-        <td><%= @reservation.service.title %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
-      </tr>
-      <tr>
-        <th>Price</th>
-        <td><%= @reservation.service.price %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
-      </tr>
-      <tr>
-        <th>Statut</th>
-        <td><%= @reservation.status %></td> <!-- Supposons que chaque réservation appartient à un utilisateur -->
-      </tr>
-      <!-- Ajoutez d'autres détails de réservation au besoin -->
-    </tbody>
-  </table>
+      <p>Date de début : <strong><%= @reservation.slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></strong></p>
+      <p>Date de fin : <strong><%= @reservation.slot.end_time.strftime("%d %B %Y - %H:%M:%S") %></strong></p>
+      <p>Service : <strong><%= @reservation.service.title %></strong></p>
+      <p>Price : <strong><%= @reservation.service.price %></strong></p>
+      <p>Entreprise : <strong><%= @enterprise.name %></strong></p>
 
-  <% if @reservation.user_id == current_user.id %>
+      <% if @reservation.user_id == current_user.id %>
 
-    <%= link_to edit_enterprise_reservation_path(@enterprise_id, @reservation), class: "btn btn-secondary" do %>
-      <i class="fa-regular fa-pen-to-square"></i>
-    <% end %>
+        <%= link_to edit_enterprise_reservation_path(@enterprise_id, @reservation), class: "btn btn-secondary" do %>
+          <i class="fa-regular fa-pen-to-square"></i>
+        <% end %>
 
-    <%= button_to enterprise_reservation_path(@enterprise_id, @reservation), method: :delete,
-              data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" do %>
-        <i class="fa-solid fa-trash-can"></i>
-    <% end %><br/>
-  <% end %>
+        <%= button_to enterprise_reservation_path(@enterprise_id, @reservation), method: :delete,
+                  data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" do %>
+            <i class="fa-solid fa-trash-can"></i>
+        <% end %><br/>
+      <% end %>
+    </div>
+
+  <div class="col-8 mt-3">
+    <%= js_map [{latitude: @enterprise.latitude, longitude: @enterprise.longitude, label: @enterprise.name}], width: "800px", height: "400px" %>
+  </div>
+
 </div>

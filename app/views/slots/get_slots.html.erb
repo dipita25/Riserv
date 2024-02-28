@@ -16,9 +16,7 @@
           <td><%= slot.end_time.strftime("%d %B %Y - %H:%M:%S") %></td>
           <td><%= slot.status %></td>
           <td>
-            <% if slot.status == 0 %>
               <%= link_to "RESERVER", reserver_enterprise_reservations_path(slot.enterprise_id, @service_id, slot.id) %>
-            <% end %>
           </td>
         </tr>
       <% end %>

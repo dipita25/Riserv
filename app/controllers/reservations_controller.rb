@@ -17,6 +17,11 @@ class ReservationsController < ApplicationController
     @slot = Slot.find(@reservation.slot_id)
     @service = Service.find(@reservation.service_id)
     @services = Service.all
+
+    @enterprise = Enterprise.find(@enterprise_id)
+
+    @key = ENV['MAPBOX_API_KEY']
+
   end
 
 

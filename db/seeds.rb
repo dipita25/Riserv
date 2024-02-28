@@ -28,12 +28,12 @@ puts "users bien créés"
 
 puts "creation des enterprises"
 
-enterprise1 = { name: 'Rajiv coiffure', address: 'Adresse 1', user_id: users.first.id }
+enterprise1 = { name: 'Rajiv coiffure', address: 'Beau bassin-Rose Hill', user_id: users.first.id }
 enterprise1 = Enterprise.create(enterprise1)
 image_url_enterprise1 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1706148090/samples/imagecon-group.jpg"
 enterprise1.photo.attach(io: URI.open(image_url_enterprise1), filename: "imagecon-group.jpg")
 
-enterprise2 = { name: 'Drake shopping', address: 'Adresse 2', user_id: users.first.id }
+enterprise2 = { name: 'Drake shopping', address: 'Port louis', user_id: users.first.id }
 enterprise2 = Enterprise.create(enterprise2)
 image_url_enterprise2 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1706148091/samples/cloudinary-group.jpg"
 enterprise2.photo.attach(io: URI.open(image_url_enterprise2), filename: "cloudinary-group.jpg")
@@ -41,16 +41,10 @@ puts "enterprises bien crées"
 
 puts "creation des slots"
 slots = Slot.create([
-  { start_time: DateTime.now, end_time: DateTime.now + 1.hour, enterprise_id: enterprise1.id, status: 1 },
-  { start_time: DateTime.now + 2.hours, end_time: DateTime.now + 3.hours, enterprise_id: enterprise1.id, status: 1 }
+  { start_time: DateTime.now, end_time: DateTime.now + 1.hour, enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.now + 2.hours, end_time: DateTime.now + 3.hours, enterprise_id: enterprise1.id, status: 0 }
 ])
 puts "slots bien créés "
-
-# Créer des services
-# services = Service.create([
-#   { title: 'Service 1', description: 'Description du service 1', enterprise_id: enterprises.first.id  },
-#   { title: 'Service 2', description: 'Description du service 2', enterprise_id: enterprises.second.id }
-# ])
 
 puts "creation des services"
 service1 = { title: 'coiffure homme', description: 'Description du service 1', enterprise_id: enterprise1.id, price: 3500 }
@@ -66,8 +60,8 @@ puts "services bien créés"
 
 puts "creation des reservations"
 reservations = Reservation.create([
-  { user_id: users.first.id, slot_id: slots.first.id, slot_id: slots.first.id, service_id: service1.id, status: 1 },
-  { user_id: users.first.id, slot_id: slots.second.id, slot_id: slots.second.id, service_id: service1.id, status: 1  }
+  { user_id: users.first.id, slot_id: slots.first.id, service_id: service1.id, status: 1 },
+  { user_id: users.first.id, slot_id: slots.second.id, service_id: service1.id, status: 1  }
 ])
 puts "reservations bien créees"
 
