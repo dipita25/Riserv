@@ -1,6 +1,7 @@
 <div class="container">
   <h2 class="mb-4">Détails de l'Entreprise</h2>
 
+<<<<<<< HEAD
   <div class="card">
     <div class="card-body">
       <table class="table">
@@ -20,11 +21,34 @@
           <%= link_to "Modifier", edit_enterprise_path, class: "btn btn-flat me-2" %>
           <%= button_to "Supprimer", enterprise_path(id: @enterprise), method: :delete,
                         data: { "turbo_method": :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-flat" %>
+=======
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Nom</th>
+        <td><%= @enterprise.name %></td>
+      </tr>
+      <tr>
+        <th>Adresse</th>
+        <td><%= @enterprise.address %></td>
+      </tr>
+      <tr>
+        <th>Actions</th>
+        <td class="d-flex">
+          <%= link_to edit_enterprise_path, class: "btn btn-flat me-2" do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <%= button_to enterprise_path(id: @enterprise), method: :delete,
+                        data: { "turbo_method": :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-flat" do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+>>>>>>> master
         </td>
       </tr>
       <!-- Ajoutez d'autres détails de réservation au besoin -->
     </tbody>
   </table>
+
 </div>
 
 

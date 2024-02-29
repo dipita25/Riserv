@@ -8,7 +8,7 @@
         <th>Date de début</th>
         <th>Date de fin</th>
         <th>Status</th>
-        <th>Action</th>
+        <th>Actions</th>
         <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
       </tr>
     </thead>
@@ -18,7 +18,11 @@
           <td><%= link_to slot.start_time.strftime("%d %B %Y - %H:%M:%S"), enterprise_slot_path(@enterprise, slot) %></td>
           <td><%= link_to slot.end_time.strftime("%d %B %Y - %H:%M:%S"), enterprise_slot_path(@enterprise, slot) %></td>
           <td><%= link_to slot.status, enterprise_slot_path(@enterprise, slot) %></td>
-          <td><%= link_to "RESERVER", reserver_enterprise_reservations_path(@enterprise, slot, current_user) %></td>
+          <td>
+            <% if slot.status == 0 %>
+              <%= link_to "RESERVER", reserver_enterprise_reservations_path(@enterprise, slot, current_user) %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'favorites/index'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -14,7 +15,14 @@ Rails.application.routes.draw do
   # patch "slots/:id", to: "slots#update", as: :slot_update
   # delete "slots/:id", to: "slots#destroy", as: :slot_destroy
 
+  get "/switch_profile", to: "application#application", as: :switch_profile
+  get "/reservations/", to: "reservations#my_reservations", as: :users_reservations
+  get "/favorites", to: "favorites#my_favorites", as: :my_favorites
+
+
   resources :enterprises do
+    get "/add_to_favorites", to: "enterprises#add_to_favorites", as: :add_to_favorites
+    get "/remove_to_favorites", to: "enterprises#remove_to_favorites", as: :remove_to_favorites
     get "/services/myself", to: "services#my_services", as: :my_services
     get "/services/:service_id/slots", to: "slots#get_slots", as: :get_slots
     resources :reviews

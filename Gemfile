@@ -31,6 +31,12 @@ gem "simple_calendar", "~> 2.4"
 
 gem "cloudinary"
 
+gem 'geocoder'
+
+gem "mapkick-rb"
+
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

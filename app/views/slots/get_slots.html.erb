@@ -12,10 +12,12 @@
     <tbody>
       <% @slots.each do |slot| %>
         <tr>
-          <td><%= slot.start_time %></td>
-          <td><%= slot.end_time %></td>
+          <td><%= slot.start_time.strftime("%d %B %Y - %H h : %M min") %></td>
+          <td><%= slot.end_time.strftime("%d %B %Y - %H h : %M min") %></td>
           <td><%= slot.status %></td>
-          <td><%= link_to "RESERVER", reserver_enterprise_reservations_path(slot.enterprise_id, @service_id, slot.id) %></td>
+          <td>
+              <%= link_to "RESERVER", reserver_enterprise_reservations_path(slot.enterprise_id, @service_id, slot.id), class: "btn btn-primary" %>
+          </td>
         </tr>
       <% end %>
     </tbody>

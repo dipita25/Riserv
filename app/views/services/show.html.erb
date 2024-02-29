@@ -1,37 +1,43 @@
 <!-- app/views/reservations/show.html.erb -->
 <div class="container">
-  <h2 class="text-center mb-4">Détails du Service</h2>
 
   <div class="row">
-    <div class="col-md-6">
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <th scope="row">Titre</th>
-            <td><%= @service.title %></td>
-          </tr>
-          <tr>
-            <th scope="row">Description</th>
-            <td><%= @service.description %></td>
-          </tr>
-          <tr>
-            <th scope="row">Prix</th>
-            <td><%= @service.price %></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-6 mt-3">
+      <h2>Detail du Service </h2>
+
+      <p>Titre : <strong><%= @service.title %></strong></p>
+      <p>Prix : <strong><%= @service.price %></strong></p>
+      <p>Description : <strong><%= @service.description %></strong></p>
+
+      <div class="row">
+        <% if Enterprise.find(@service.enterprise_id).user_id != current_user.id%>
+          <div class="col-md-2">
+            <%= link_to "Réserver", enterprise_get_slots_path(@service.enterprise_id, @service), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        <div class="col-md-2">
+          <% if @enterprise.user_id == current_user.id %>
+            <p> <%= link_to edit_enterprise_service_path(@service.enterprise_id, @service), class: "btn btn-primary" do %>
+                  <i class="fa-regular fa-pen-to-square"></i>
+                <% end %></p>
+
+            <%= button_to enterprise_service_path(@service.enterprise_id, @service), method: :delete,
+                data: { "turbo_method": :delete, "turbo_confirm": "Are you sure?" },
+                class: "btn btn-primary" do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+
+          <% end %>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+
     </div>
-    <div class="col-md-6">
-      <%= cl_image_tag(@service.photo.key, width: 400, height: 300, crop: :fit, class: "img-fluid rounded") %>
+
+    <div class="col-6 mt-5">
+      <%= cl_image_tag(@service.photo.key,
+        width: 500, height: 350, crop: :fit) %>
     </div>
   </div>
 
-  <div class="text-center mt-4">
-    <%= button_to 'Supprimer', enterprise_service_path(@service.enterprise_id, @service), method: :delete,
-          data: { "turbo_method": :delete, "turbo_confirm": "Êtes-vous sûr de vouloir supprimer ce service ?" },
-          class: "btn btn-danger mr-2" %>
-    <%= link_to "Retour", enterprise_services_path(@service.enterprise_id), class: "btn btn-secondary mr-2" %>
-    <%= link_to "Modifier", edit_enterprise_service_path(@service.enterprise_id, @service), class: "btn btn-primary mr-2" %>
-    <%= link_to "Choisir", enterprise_get_slots_path(@service.enterprise_id, @service), class: "btn btn-primary" %>
-  </div>
 </div>

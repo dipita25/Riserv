@@ -1,11 +1,60 @@
 <div class="container">
+  <div class="row mt-2">
+    <div class="col-md-8">
+      <h1>Services proposés par "<%= @enterprise.name %>"</h1>
+    </div>
+    <div class="col-md-4 text-end">
+      <% if @enterprise.user_id == current_user.id %>
+        <%= link_to "Ajouter un service", new_enterprise_service_path(@enterprise.id), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 
-  <ul>
+  <div class="row">
     <% @services.each do |service| %>
-      <li><%= link_to service.title, enterprise_service_path(@enterprise.id, service) %></li>
-    <% end %>
-  </ul>
+      <div class="col-md-3">
+        <div class="card mt-3" style="width: 18rem;">
+          <%= cl_image_tag(service.photo.key, crop: :fit, class: "card-img-top game-image") %>
+          <div class="card-body">
+            <h5 class="card-title"><%= service.title %></h5>
+            <p class="card-text"><%= service.description %>
+            </p>
+
+            <%= link_to "Détails", enterprise_service_path(@enterprise.id, service), class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
+    <%end %>
+  </div>
+
+  <div class="row mt-5">
+    <h1>Reviews</h1>
+  </div>
 
 
-  <%= link_to "créer un service", new_enterprise_service_path(@enterprise.id), class: "btn btn-primary" %>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <% if @reviews.length > 1 %>
+        <div class="carousel-item active" data-bs-interval="2000">
+          <h5 class="card-title"><%= User.find(@reviews.first.user_id).email %></h5>
+          <p class="card-text"><%= @reviews.first.content %></p>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="2000">
+          <h5 class="card-title"><%= User.find(@reviews.second.user_id).email %></h5>
+          <p class="card-text"><%= @reviews.second.content %></p>
+        </div>
+      <% else %>
+        <div class="carousel-item active">
+          <h5 class="card-title"><%= User.find(@reviews.first.user_id).email %></h5>
+          <p class="card-text"><%= @reviews.first.content %></p>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
+<%= link_to "tous les Avis", enterprise_reviews_path(@enterprise.id), class: "btn btn-primary"%>
+
 </div>

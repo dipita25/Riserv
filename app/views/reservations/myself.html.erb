@@ -62,15 +62,21 @@
         <th>Date de début</th>
         <th>Date de fin</th>
         <th>Service</th>
+        <th>Actions</th>
         <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
       </tr>
     </thead>
     <tbody>
       <% @reservations.each do |reservation| %>
         <tr>
-          <td><%= link_to reservation.slot.start_time.strftime("%d %B %Y - %H:%M:%S"), enterprise_reservation_path(@enterprise_id, reservation) %></td>
-          <td><%= link_to reservation.slot.end_time.strftime("%d %B %Y - %H:%M:%S"), enterprise_reservation_path(@enterprise_id, reservation) %></td>
-          <td><%= link_to reservation.service.title, enterprise_reservation_path(@enterprise_id, reservation) %></td>
+          <td><%= reservation.slot.start_time.strftime("%d %B %Y - %H h : %M min") %></td>
+          <td><%= reservation.slot.end_time.strftime("%d %B %Y - %H h : %M min") %></td>
+          <td><%= reservation.service.title %></td>
+          <td>
+            <%= link_to enterprise_reservation_path(@enterprise_id, reservation), class: "btn btn-primary" do %>
+              <i class="fa-solid fa-eye"></i>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

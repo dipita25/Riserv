@@ -10,8 +10,5 @@
   </table>
 
 
-    <%= button_to 'Supprimer', enterprise_review_path(@review.enterprise_id, @review), method: :delete,
-          data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %><br/>
-  <%= link_to "Retour", enterprise_reviews_path(@review.enterprise_id), class: "btn btn-secondary" %><br/><br/>
-  <%= link_to "MODIFIER", edit_enterprise_review_path(@review.enterprise_id, @review), class: "btn btn-secondary" %>
+    
 </div>
