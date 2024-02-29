@@ -8,8 +8,7 @@
           <%= cl_image_tag(enterprise.photo.key, width: 400, height: 300, crop: :fit, class: "card-img-top enterprise-image") %>
           <div class="card-body">
             <h5 class="card-title"><%= enterprise.name %></h5>
-            <p class="card-text">Some quick example text to build on the card title and
-              make up the bulk of the card's content.
+            <p class="card-text"><%= enterprise.description %>
             </p>
 
             <%= link_to "consulter les services", enterprise_services_path(enterprise.id), class: "btn btn-primary"%>
@@ -28,7 +27,7 @@
     <%end %>
   </div>
 
-  
+
 
 
 

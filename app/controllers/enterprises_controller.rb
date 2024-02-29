@@ -70,6 +70,6 @@ class EnterprisesController < ApplicationController
   private
 
   def params_enterprise
-    params.require(:enterprise).permit(:user_id, :name, :address, :photo)
+    params.require(:enterprise).permit(:user_id, :name, :address, :description, :photo)
   end
 end
