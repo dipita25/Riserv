@@ -1,13 +1,15 @@
 <div class="container">
-  <h1>
-  Mes services</h1>
+  <h2 class="text-center mb-4">Mes Services</h2>
 
-  <ul>
+  <ul class="list-group">
     <% @services.each do |service| %>
-      <li><%= link_to service.title, enterprise_service_path(@enterprise_id, service) %></li>
+      <li class="list-group-item">
+        <%= link_to service.title, enterprise_service_path(@enterprise_id, service), class: "text-decoration-none text-dark fw-bold" %>
+      </li>
     <% end %>
   </ul>
 
-
-  <%= link_to "créer un service", new_enterprise_service_path(@enterprise_id), class: "btn btn-primary" %>
+  <div class="text-center mt-4">
+    <%= link_to "Créer un Service", new_enterprise_service_path(@enterprise_id), class: "btn btn-primary" %>
+  </div>
 </div>

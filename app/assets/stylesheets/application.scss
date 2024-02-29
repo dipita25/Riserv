@@ -12,3 +12,17 @@
 @import "pages/index";
 @import "flatpickr/dist/flatpickr.css";
 @import "simple_calendar";
+
+.home-page {
+  height: 100vh;
+  background-image: url('alex-suprun-F3g9iFAltv8-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+
+  .formulaire {
+    background-color: beige;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+}

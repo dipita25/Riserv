@@ -1,12 +1,21 @@
 <div class="container">
-  <h1>Détail de Créneau</h1>
+  <h2 style="text-align: center; margin-bottom: 20px;">Détail de Créneau</h2>
 
-
-  <div>Heure de Début = <%= @slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></div>
-  <div>Heure de Fin = <%= @slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></div>
-  <div>Statut = <%= @slot.status %></div>
-
-  <div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3 pl-0">
+      <div class="form-group">
+        <label for="heure-debut">Heure de Début</label>
+        <p><%= @slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></p>
+      </div>
+      <div class="form-group">
+        <label for="heure-fin">Heure de Fin</label>
+        <p><%= @slot.end_time.strftime("%d %B %Y - %H:%M:%S") %></p>
+      </div>
+      <div class="form-group">
+        <label for="statut">Statut</label>
+        <p><%= @slot.status %></p>
+      </div>
+      <div class="form-group text-left">
 
   <%= link_to "Retour", enterprise_slots_path(@enterprise_id), class: "btn btn-secondary" %><br/><br/>
 

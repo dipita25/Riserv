@@ -1,6 +1,4 @@
 class ReservationsController < ApplicationController
-
-
   def myself
     @enterprise_id = params[:enterprise_id]
     @reservations = Reservation.where(user_id: current_user.id)

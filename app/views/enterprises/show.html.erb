@@ -1,18 +1,22 @@
 <div class="container">
+  <h2 class="mb-4">Détails de l'Entreprise</h2>
 
-  <table class="table">
-    <tbody>
-      <tr>
-        <th>Nom</th>
-        <td><%= @enterprise.name %></td>
-      </tr>
-      <tr>
-        <th>Adresse</th>
-        <td><%= @enterprise.address %></td>
-      </tr>
-      <tr>
-        <th>Actions</th>
-        <td class="d-flex">
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Nom</th>
+            <td><%= @enterprise.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Adresse</th>
+            <td><%= @enterprise.address %></td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td>
+              <div class="d-flex align-items-center">
           <%= link_to "Modifier", edit_enterprise_path, class: "btn btn-flat me-2" %>
           <%= button_to "Supprimer", enterprise_path(id: @enterprise), method: :delete,
                         data: { "turbo_method": :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-flat" %>

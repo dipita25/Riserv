@@ -1,28 +1,25 @@
 
 
-
-<div class="container-fluid">
+<div class="home-page">
+<div class="container-fluid ">
   <div class="row">
-    <div class= "col-12 d-flex justify-content-center align-items-center"  style="height: 80vh;">
-      <div class="center-div text-center">
-        <h1>RISERV</h1>
+    <div class="col-12 d-flex justify-content-center align-items-center" style="height: 80vh; background-color: transparent;">
+      <div class="center-div text-center formulaire">
+        <h1 style="color: #6c757d; font-size: 3rem;">RISERV</h1>
+        <p style="color: #555; font-size: 1.2rem;">Découvrez des choses étonnantes autour de vous</p>
         <form class="row g-3">
           <div class="col-auto">
-            <input type="text" class="form-control" id="searchInput">
+            <input type="text" class="form-control" id="searchInput" placeholder="Enter your search..." style="border-radius: 20px; padding: 15px;">
           </div>
           <div class="col-auto">
-            <%= link_to "recherche", "javascript:void(0)", data: { url: recherche_path(recherche: '') }, onclick: "performSearch()", class: "btn btn-secondary" %>
+            <button type="button" onclick="performSearch()" class="btn btn-secondary" style="border-radius: 20px; padding: 12px 30px; font-size: 1.2rem; transition: all 0.3s ease; background-color: #6c757d; color: #fff;">Search</button>
           </div>
         </form>
       </div>
     </div>
   </div>
-
-
 </div>
-
-
-
+</div>
 <script>
   function performSearch() {
     // Récupérer l'URL de l'élément attribut data

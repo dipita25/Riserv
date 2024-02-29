@@ -1,10 +1,22 @@
 <div class="container">
   <%= simple_form_for(@service, url: enterprise_services_path) do |f| %>
-    <%= f.input :enterprise_id, as: :integer, input_html: { value: @enterprise_id }, :as => :hidden %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :price %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.input :enterprise_id, as: :hidden, input_html: { value: @enterprise_id } %>
+    <div class="mb-3">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control", rows: 4 %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :price %>
+      <%= f.number_field :price, class: "form-control", step: "0.01" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :photo %>
+      <%= f.file_field :photo, class: "form-control" %>
+    </div>
+    <%= f.submit "Créer", class: "btn btn-primary" %>
   <% end %>
 </div>

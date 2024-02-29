@@ -29,7 +29,7 @@ puts "users bien créés"
 puts "creation des enterprises"
 enterprises = Enterprise.create([
   { name: 'Rajiv coiffure', address: 'Adresse 1', user_id: users.first.id },
-  { name: 'Drake shopping', address: 'Adresse 2', user_id: users.second.id }
+  { name: 'Drake shopping', address: 'Adresse 2', user_id: users.second.id}
 ])
 puts "enterprises bien crées"
 
