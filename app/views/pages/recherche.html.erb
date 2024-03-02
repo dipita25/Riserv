@@ -21,6 +21,10 @@
               <%= link_to "Retirer des favoris", enterprise_remove_to_favorites_path(enterprise.id), class: "btn btn-primary mt-2"%>
             <% end %>
 
+            <%= Geocoder::Calculations.distance_between(
+              [@latitude, @longitude],
+              [enterprise.latitude, enterprise.longitude]).to_i %> KM
+
           </div>
         </div>
       </div>

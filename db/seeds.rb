@@ -47,7 +47,7 @@ enterprise3 = Enterprise.create(enterprise3)
 image_url_enterprise3 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709147455/clinic_o8lsnv.webp"
 enterprise3.photo.attach(io: URI.open(image_url_enterprise3), filename: "clinic_o8lsnv.jpg")
 
-enterprise4 = { name: 'Dentist Moris', address: 'Port louis', description: "Entreprise opérant dans le secteur dentaire et propose des prestations extraordinaires", user_id: users.first.id }
+enterprise4 = { name: 'Dentist Moris', address: 'albion', description: "Entreprise opérant dans le secteur dentaire et propose des prestations extraordinaires", user_id: users.first.id }
 enterprise4 = Enterprise.create(enterprise4)
 image_url_enterprise4 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709147455/dentist_d02reg.jpg"
 enterprise4.photo.attach(io: URI.open(image_url_enterprise4), filename: "_d02reg.jpg")
