@@ -18,6 +18,14 @@ class ReservationsController < ApplicationController
 
     @enterprise = Enterprise.find(@enterprise_id)
 
+
+    @marker = {
+      lat: @enterprise.latitude,
+      lng: @enterprise.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {enterprise: @enterprise}),
+      marker_html: render_to_string(partial: "marker")
+    }
+
     @key = ENV['MAPBOX_API_KEY']
 
   end

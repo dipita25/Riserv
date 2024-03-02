@@ -74,8 +74,14 @@
 
     </div>
 
-    <div class="col-7 mt-3">
+    <%# <div class="col-7 mt-3">
       <%= js_map [{latitude: @enterprise.latitude, longitude: @enterprise.longitude, label: @enterprise.name}], width: "800px", height: "400px" %>
+    <!--</div> %>-->
+
+    <div class="col-7 mt-3"
+      data-controller="map"
+      data-map-markers-value="<%= @marker.to_json %>"
+      data-map-api-key-value="<%= @key %>">
     </div>
 
   </div>

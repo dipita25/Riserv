@@ -8,30 +8,15 @@ class PagesController < ApplicationController
     @text = params[:recherche]
     if @text == "all"
       @text = ""
-      @enterprises = Enterprise.all
+      @enterprises = Enterprise.near("Moka", 20000)
     else
       @services = Service.where("title LIKE ?", "%#{@text}%")
-      @enterprises = Enterprise.joins(:services).where(services: { id: @services.map(&:id) }).distinct
+      @enterprises = Enterprise.joins(:services).where(services: { id: @services.map(&:id) }).distinct.near("Moka", 20000)
 
     end
 
-
-    @key = ENV['MAPBOX_API_KEY']
-
-    @markers = @enterprises.geocoded.map do |enterprise|
-      {
-        lat: enterprise.latitude,
-        lng: enterprise.longitude
-      }
-    end
-
-    location = request.location
-    @latitude = location.latitude
-    @longitude = location.longitude
-
-    puts "##########################################"
-    puts location
-    puts "###########################"
-
+    @my_position = Geocoder.search("Moka")
+    @latitude = @my_position.first.coordinates[0]
+    @longitude = @my_position.first.coordinates[1]
   end
 end
