@@ -1,0 +1,17 @@
+<div class="container">
+
+  <div class="row">
+    <h1>Mes services</h1>
+
+    <ul>
+      <% @services.each do |service| %>
+        <li><%= link_to service.title, enterprise_service_path(@enterprise.id, service) %></li>
+      <% end %>
+    </ul>
+
+    <% if @enterprise.user_id == current_user.id %>
+      <%= link_to "créer un service", new_enterprise_service_path(@enterprise.id), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+</div>

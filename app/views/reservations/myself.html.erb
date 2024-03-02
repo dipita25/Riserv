@@ -1,0 +1,27 @@
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>Service</th>
+        <th>Actions</th>
+        <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.slot.start_time.strftime("%d %B %Y - %H h : %M min") %></td>
+          <td><%= reservation.slot.end_time.strftime("%d %B %Y - %H h : %M min") %></td>
+          <td><%= reservation.service.title %></td>
+          <td>
+            <%= link_to enterprise_reservation_path(@enterprise_id, reservation), class: "btn btn-primary" do %>
+              <i class="fa-solid fa-eye"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

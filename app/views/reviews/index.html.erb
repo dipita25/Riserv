@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Reviews pour l'entreprise <%= @enterprise.name %></h1>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Utilisateurs</th>
+        <th>Date</th>
+        <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td>
+            <% @user = User.find(review.user_id) %>
+            <%= link_to @user.email, enterprise_review_path(review.enterprise_id, review) %>
+          </td>
+          <td>
+            <%= link_to review.created_at, enterprise_review_path(review.enterprise_id, review) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "ajouter un avis", new_enterprise_review_path(@enterprise.id), class: "btn btn-primary" %>
+</div>

@@ -1,0 +1,9 @@
+<div class="container">
+  <%= simple_form_for @reservation, url: enterprise_reservation_path(@enterprise_id, @reservation.id) do |f| %>
+    <%= f.input :service_id, collection: @services.map { |s| [s.title, s.id] }, selected: @service.title %>
+    <%= f.input :slot_id, collection: @slots.map { |s| ["DEBUT : #{l(s.start_time, format: "%d %B %Y - %H:%M:%S")} / FIN : #{l(s.end_time, format: "%d %B %Y - %H:%M:%S")}", s.id]}  %>
+    <!-- Ajoutez d'autres champs de formulaire au besoin -->
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+
+</div>

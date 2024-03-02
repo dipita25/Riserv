@@ -1,0 +1,29 @@
+<div class="container">
+
+
+  <div class="row">
+    <% @enterprises.each do |enterprise| %>
+      <div class="col-md-3">
+        <div class="card mt-3" style="width: 18rem;">
+          <%= cl_image_tag(enterprise.photo.key, width: 400, height: 300, crop: :fit, class: "card-img-top enterprise-image") %>
+          <div class="card-body">
+            <h5 class="card-title"><%= enterprise.name %></h5>
+            <p class="card-text"><%= enterprise.description %>
+            </p>
+
+            <%= link_to "consulter les services", enterprise_services_path(enterprise.id), class: "btn btn-primary"%>
+            <%= link_to "Reviews", enterprise_reviews_path(enterprise.id), class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
+    <%end %>
+  </div>
+</div>
+
+<style>
+  .enterprise-image {
+    width: 287px;
+    height: 200px;
+    object-fit: fit; /* ou `object-fit: contain;` selon le rendu souhaité */
+  }
+</style>

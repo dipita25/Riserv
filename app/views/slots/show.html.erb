@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Détail de Créneau</h1>
+
+
+  <div>Heure de Début = <%= @slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></div>
+  <div>Heure de Fin = <%= @slot.start_time.strftime("%d %B %Y - %H:%M:%S") %></div>
+  <div>Statut = <%= @slot.status %></div>
+
+  <div>
+
+    <%= button_to enterprise_slot_path(@enterprise_id), method: :delete,
+          data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" do %>
+          <i class="fa-solid fa-trash-can"></i>
+    <% end %><br/>
+
+    <%= link_to edit_enterprise_slot_path, class: "btn btn-primary" do %>
+      <i class="fa-regular fa-pen-to-square"></i>
+    <% end %>
+  <div>
+</div>
