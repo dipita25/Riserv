@@ -14,11 +14,26 @@
             <%= link_to "consulter les services", enterprise_services_path(enterprise.id), class: "btn btn-primary"%>
             <%= link_to "Reviews", enterprise_reviews_path(enterprise.id), class: "btn btn-primary mt-2"%>
             <% if Favorite.where(enterprise_id: enterprise.id, user_id: current_user.id).length == 0 %>
-              <%= link_to "Ajouter aux favoris", enterprise_add_to_favorites_path(enterprise.id), class: "btn btn-primary mt-2"%>
+              <%= link_to "#" do%>
+                <i class="fa-regular fa-star fa-2x"
+                  data-controller="favori"
+                  data-favori-target="favori_add"
+                  data-favori-id-value="<%= enterprise.id %>"
+                  data-action="mouseenter->favori#handleMouseEnter click->favori#ajouterRetirer">
+                </i>
+              <% end %>
             <% end %>
 
+
             <% if Favorite.where(enterprise_id: enterprise.id, user_id: current_user.id).length > 0 %>
-              <%= link_to "Retirer des favoris", enterprise_remove_to_favorites_path(enterprise.id), class: "btn btn-primary mt-2"%>
+              <%= link_to "#" do%>
+                <i class="fa-solid fa-star fa-2x"
+                  data-controller="favori"
+                  data-favori-target="favori_add"
+                  data-favori-id-value="<%= enterprise.id %>"
+                  data-action="mouseenter->favori#handleMouseEnter click->favori#ajouterRetirer">
+                </i>
+              <% end %>
             <% end %>
 
             <%= Geocoder::Calculations.distance_between(
