@@ -47,12 +47,13 @@ class EnterprisesController < ApplicationController
 
   def add_to_favorites
     @enterprise_id = params[:enterprise_id]
+    @user= current_user
 
     if Favorite.where(enterprise_id: @enterprise_id, user_id: current_user.id).length == 0
       @favorite = Favorite.new({user_id: current_user.id, enterprise_id: @enterprise_id})
-      if @favorite.save
-        redirect_to root_path, notice: 'enterprise successfully added to favorites'
-      end
+      @favorite.save
+      head :no_content
+      raise
     else
       redirect_to root_path, notice: 'unable to add to favorites'
     end
@@ -62,9 +63,9 @@ class EnterprisesController < ApplicationController
   def remove_to_favorites
     @enterprise_id = params[:enterprise_id]
     @favorite = Favorite.where(user_id: current_user.id, enterprise_id: @enterprise_id).first
-    if @favorite.destroy
-      redirect_to root_path, notice: 'enterprise successfully removed to favorites'
-    end
+    @favorite.destroy
+    head :no_content
+    raise
   end
 
   private

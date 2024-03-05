@@ -9,22 +9,38 @@
           <%= cl_image_tag(enterprise.photo.key, width: 400, height: 300, crop: :fit, class: "card-img-top enterprise-image") %>
           <div class="card-body">
             <h5 class="card-title"><%= enterprise.name %></h5>
-            <p class="card-text"><%= truncate(enterprise.description, length: 100) %></p>
-          </div>
-          <div class="card-footer">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <%= link_to "Consulter les services", enterprise_services_path(enterprise.id), class: "btn btn-primary btn-sm mr-2"%>
-                <%= link_to "Reviews", enterprise_reviews_path(enterprise.id), class: "btn btn-primary btn-sm mr-2"%>
-              </div>
-              <div>
-                <% if Favorite.exists?(enterprise_id: enterprise.id, user_id: current_user.id) %>
-                  <%= link_to "Retirer des favoris", enterprise_remove_to_favorites_path(enterprise.id), class: "btn btn-danger btn-sm"%>
-                <% else %>
-                  <%= link_to "Ajouter aux favoris", enterprise_add_to_favorites_path(enterprise.id), class: "btn btn-primary btn-sm"%>
-                <% end %>
-              </div>
-            </div>
+            <p class="card-text"><%= enterprise.description %>
+            </p>
+
+            <%= link_to "consulter les services", enterprise_services_path(enterprise.id), class: "btn btn-primary"%>
+            <%= link_to "Reviews", enterprise_reviews_path(enterprise.id), class: "btn btn-primary mt-2"%>
+            <% if Favorite.where(enterprise_id: enterprise.id, user_id: current_user.id).length == 0 %>
+              <%= link_to "#" do%>
+                <i class="fa-regular fa-star fa-2x"
+                  data-controller="favori"
+                  data-favori-target="favori_add"
+                  data-favori-id-value="<%= enterprise.id %>"
+                  data-action="mouseenter->favori#handleMouseEnter click->favori#ajouterRetirer">
+                </i>
+              <% end %>
+            <% end %>
+
+
+            <% if Favorite.where(enterprise_id: enterprise.id, user_id: current_user.id).length > 0 %>
+              <%= link_to "#" do%>
+                <i class="fa-solid fa-star fa-2x"
+                  data-controller="favori"
+                  data-favori-target="favori_add"
+                  data-favori-id-value="<%= enterprise.id %>"
+                  data-action="mouseenter->favori#handleMouseEnter click->favori#ajouterRetirer">
+                </i>
+              <% end %>
+            <% end %>
+
+            <%= Geocoder::Calculations.distance_between(
+              [@latitude, @longitude],
+              [enterprise.latitude, enterprise.longitude]).to_i %> KM
+
           </div>
         </div>
       </div>

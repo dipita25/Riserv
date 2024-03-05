@@ -4,7 +4,6 @@
       <tr>
         <th>Date de début</th>
         <th>Date de fin</th>
-        <th>Status</th>
         <th>Action</th>
         <!-- Ajoutez d'autres en-têtes de colonne au besoin -->
       </tr>
@@ -14,9 +13,12 @@
         <tr>
           <td><%= slot.start_time.strftime("%d %B %Y - %H h : %M min") %></td>
           <td><%= slot.end_time.strftime("%d %B %Y - %H h : %M min") %></td>
-          <td><%= slot.status %></td>
           <td>
+            <% if slot.status === "booked" %>
+              <%= link_to "RESERVER", reserver_enterprise_reservations_path(slot.enterprise_id, @service_id, slot.id), class: "btn btn-danger disabled" %>
+            <% else %>
               <%= link_to "RESERVER", reserver_enterprise_reservations_path(slot.enterprise_id, @service_id, slot.id), class: "btn btn-primary" %>
+            <% end %>
           </td>
         </tr>
       <% end %>
