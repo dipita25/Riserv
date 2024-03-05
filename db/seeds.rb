@@ -54,9 +54,55 @@ enterprise4.photo.attach(io: URI.open(image_url_enterprise4), filename: "_d02reg
 puts "enterprises bien crées"
 
 puts "creation des slots"
-slots = Slot.create([
-  { start_time: DateTime.now, end_time: DateTime.now + 1.hour, enterprise_id: enterprise1.id, status: 0 },
-  { start_time: DateTime.now + 2.hours, end_time: DateTime.now + 3.hours, enterprise_id: enterprise1.id, status: 0 }
+slots1 = Slot.create([
+  { start_time: DateTime.new(2024,3,25,8,0,0), end_time: DateTime.new(2024,3,25,8,59,0), enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.new(2024,3,25,9,0,0), end_time: DateTime.new(2024,3,25,9,59,0), enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.new(2024,3,25,10,0,0), end_time: DateTime.new(2024,3,25,10,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,11,0,0), end_time: DateTime.new(2024,3,25,11,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,12,0,0), end_time: DateTime.new(2024,3,25,12,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,14,0,0), end_time: DateTime.new(2024,3,25,14,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,15,0,0), end_time: DateTime.new(2024,3,25,15,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,16,0,0), end_time: DateTime.new(2024,3,25,16,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,17,0,0), end_time: DateTime.new(2024,3,25,17,59,0), enterprise_id: enterprise1.id, status: 0 },
+])
+
+
+slots2 = Slot.create([
+  { start_time: DateTime.new(2024,3,25,8,0,0), end_time: DateTime.new(2024,3,25,8,59,0), enterprise_id: enterprise2.id, status: 1 },
+  { start_time: DateTime.new(2024,3,25,9,0,0), end_time: DateTime.new(2024,3,25,9,59,0), enterprise_id: enterprise2.id, status: 1 },
+  { start_time: DateTime.new(2024,3,25,10,0,0), end_time: DateTime.new(2024,3,25,10,59,0), enterprise_id: enterprise2.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,11,0,0), end_time: DateTime.new(2024,3,25,11,59,0), enterprise_id: enterprise2.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,12,0,0), end_time: DateTime.new(2024,3,25,12,59,0), enterprise_id: enterprise2.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,14,0,0), end_time: DateTime.new(2024,3,25,14,59,0), enterprise_id: enterprise2.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,15,0,0), end_time: DateTime.new(2024,3,25,15,59,0), enterprise_id: enterprise2.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,16,0,0), end_time: DateTime.new(2024,3,25,16,59,0), enterprise_id: enterprise2.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,17,0,0), end_time: DateTime.new(2024,3,25,17,59,0), enterprise_id: enterprise2.id, status: 0 },
+])
+
+
+slots3 = Slot.create([
+  { start_time: DateTime.new(2024,3,25,8,0,0), end_time: DateTime.new(2024,3,25,8,59,0), enterprise_id: enterprise3.id, status: 1 },
+  { start_time: DateTime.new(2024,3,25,9,0,0), end_time: DateTime.new(2024,3,25,9,59,0), enterprise_id: enterprise3.id, status: 1 },
+  { start_time: DateTime.new(2024,3,25,10,0,0), end_time: DateTime.new(2024,3,25,10,59,0), enterprise_id: enterprise3.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,11,0,0), end_time: DateTime.new(2024,3,25,11,59,0), enterprise_id: enterprise3.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,12,0,0), end_time: DateTime.new(2024,3,25,12,59,0), enterprise_id: enterprise3.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,14,0,0), end_time: DateTime.new(2024,3,25,14,59,0), enterprise_id: enterprise3.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,15,0,0), end_time: DateTime.new(2024,3,25,15,59,0), enterprise_id: enterprise3.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,16,0,0), end_time: DateTime.new(2024,3,25,16,59,0), enterprise_id: enterprise3.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,17,0,0), end_time: DateTime.new(2024,3,25,17,59,0), enterprise_id: enterprise3.id, status: 0 },
+])
+
+
+slots4 = Slot.create([
+  { start_time: DateTime.new(2024,3,25,8,0,0), end_time: DateTime.new(2024,3,25,8,59,0), enterprise_id: enterprise4.id, status: 1 },
+  { start_time: DateTime.new(2024,3,25,9,0,0), end_time: DateTime.new(2024,3,25,9,59,0), enterprise_id: enterprise4.id, status: 1 },
+  { start_time: DateTime.new(2024,3,25,10,0,0), end_time: DateTime.new(2024,3,25,10,59,0), enterprise_id: enterprise4.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,11,0,0), end_time: DateTime.new(2024,3,25,11,59,0), enterprise_id: enterprise4.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,12,0,0), end_time: DateTime.new(2024,3,25,12,59,0), enterprise_id: enterprise4.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,14,0,0), end_time: DateTime.new(2024,3,25,14,59,0), enterprise_id: enterprise4.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,15,0,0), end_time: DateTime.new(2024,3,25,15,59,0), enterprise_id: enterprise4.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,16,0,0), end_time: DateTime.new(2024,3,25,16,59,0), enterprise_id: enterprise4.id, status: 0 },
+  { start_time: DateTime.new(2024,3,25,17,0,0), end_time: DateTime.new(2024,3,25,17,59,0), enterprise_id: enterprise4.id, status: 0 },
 ])
 puts "slots bien créés "
 
@@ -70,12 +116,48 @@ service2 = { title: 'coiffure femme', description: 'Description du service 2', e
 service2 = Service.create(service2)
 image_url2 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
 service2.photo.attach(io: URI.open(image_url2), filename: "femme_h9xnkn.jpg")
+
+service3 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise2.id, price: 2500 }
+service3 = Service.create(service3)
+image_url3 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
+service3.photo.attach(io: URI.open(image_url3), filename: "femme_h9xnkn.jpg")
+
+service4 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise2.id, price: 2500 }
+service4 = Service.create(service4)
+image_url4 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
+service4.photo.attach(io: URI.open(image_url4), filename: "femme_h9xnkn.jpg")
+
+service5 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise3.id, price: 2500 }
+service5 = Service.create(service5)
+image_url5 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
+service5.photo.attach(io: URI.open(image_url5), filename: "femme_h9xnkn.jpg")
+
+service6 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise3.id, price: 2500 }
+service6 = Service.create(service6)
+image_url6 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
+service6.photo.attach(io: URI.open(image_url6), filename: "femme_h9xnkn.jpg")
+
+service7 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise4.id, price: 2500 }
+service7 = Service.create(service7)
+image_url7 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
+service7.photo.attach(io: URI.open(image_url7), filename: "femme_h9xnkn.jpg")
+
+service8 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise4.id, price: 2500 }
+service8 = Service.create(service8)
+image_url8 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
+service8.photo.attach(io: URI.open(image_url8), filename: "femme_h9xnkn.jpg")
 puts "services bien créés"
 
 puts "creation des reservations"
 reservations = Reservation.create([
-  { user_id: users.first.id, slot_id: slots.first.id, service_id: service1.id, status: 1 },
-  { user_id: users.first.id, slot_id: slots.second.id, service_id: service1.id, status: 1  }
+  { user_id: users.first.id, slot_id: slots1.first.id, service_id: service1.id, status: 1 },
+  { user_id: users.first.id, slot_id: slots1.second.id, service_id: service2.id, status: 1  },
+  { user_id: users.first.id, slot_id: slots2.first.id, service_id: service3.id, status: 1  },
+  { user_id: users.first.id, slot_id: slots2.second.id, service_id: service4.id, status: 1  },
+  { user_id: users.first.id, slot_id: slots3.first.id, service_id: service5.id, status: 1  },
+  { user_id: users.first.id, slot_id: slots3.second.id, service_id: service6.id, status: 1  },
+  { user_id: users.first.id, slot_id: slots4.first.id, service_id: service7.id, status: 1  },
+  { user_id: users.first.id, slot_id: slots4.second.id, service_id: service8.id, status: 1  }
 ])
 puts "reservations bien créees"
 
@@ -83,8 +165,11 @@ puts "creation des reviews"
 reviews = Review.create([
   { content: 'je recommande vraiment cet endroit, l\'accueil est très professionnel et les prix sont abordables', user_id: users.first.id, enterprise_id: enterprise1.id },
   { content: 'Si vous avez des doutes, alors croyez moi sur parole, n\'y allez pas. le service y est très affreux', user_id: users.second.id, enterprise_id: enterprise1.id },
-  { content: 'Je pense que vous ne vous rendrez plus jamais dans cet endroit', user_id: users.second.id, enterprise_id: enterprise1.id },
-  { content: 'allez-y uniquement si vous avez de envie de pleurer car le service est deplorable', user_id: users.second.id, enterprise_id: enterprise1.id },
-  { content: 'trop sombre endroit', user_id: users.second.id, enterprise_id: enterprise1.id }
+  { content: 'Je pense que vous ne vous rendrez plus jamais dans cet endroit', user_id: users.second.id, enterprise_id: enterprise2.id },
+  { content: 'allez-y uniquement si vous avez de envie de pleurer car le service est deplorable', user_id: users.second.id, enterprise_id: enterprise2.id },
+  { content: 'trop sombre endroit', user_id: users.second.id, enterprise_id: enterprise3.id },
+  { content: 'allez-y uniquement si vous avez de envie de pleurer car le service est deplorable', user_id: users.second.id, enterprise_id: enterprise3.id },
+  { content: 'allez-y uniquement si vous avez de envie de pleurer car le service est deplorable', user_id: users.second.id, enterprise_id: enterprise4.id },
+  { content: 'Si vous avez des doutes, alors croyez moi sur parole, n\'y allez pas. le service y est très affreux', user_id: users.second.id, enterprise_id: enterprise4.id }
 ])
 puts "reviews bien créées"

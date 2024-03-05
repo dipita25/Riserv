@@ -53,7 +53,16 @@ export default class extends Controller {
   }
 
   retirer() {
-    this.favori_removeTarget.classList.remove("fa-solid")
-    this.favori_removeTarget.classList.add("fa-regular")
+    alert("te")
+    fetch(`/enterprises/${this.idValue}/remove_to_favorites`, { method: 'GET' })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erreur lors de l\'ajout aux favoris');
+        }
+        // Gérer la réponse si nécessaire
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 }
