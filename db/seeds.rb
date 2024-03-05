@@ -33,8 +33,8 @@ puts "creation des enterprises"
 enterprise1 = { name: 'Rajiv coiffure', address: 'Beau bassin-Rose Hill', description: "Entreprise du secteur de la coiffure et propose des prestations extraordinaires",
                  user_id: users.first.id }
 enterprise1 = Enterprise.create(enterprise1)
-image_url_enterprise1 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1706148090/samples/imagecon-group.jpg"
-enterprise1.photo.attach(io: URI.open(image_url_enterprise1), filename: "imagecon-group.jpg")
+image_url_enterprise1 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709650176/rajiv_a7tbjv.png"
+enterprise1.photo.attach(io: URI.open(image_url_enterprise1), filename: "rajiv_a7tbjv.png")
 
 enterprise2 = { name: 'Pet Consult', address: 'Port louis', description: "Entreprise opérant dans le secteur vétérinaire et propose des prestations extraordinaires", user_id: users.first.id }
 enterprise2 = Enterprise.create(enterprise2)
@@ -47,7 +47,7 @@ enterprise3 = Enterprise.create(enterprise3)
 image_url_enterprise3 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709147455/clinic_o8lsnv.webp"
 enterprise3.photo.attach(io: URI.open(image_url_enterprise3), filename: "clinic_o8lsnv.jpg")
 
-enterprise4 = { name: 'Dentist Moris', address: 'albion', description: "Entreprise opérant dans le secteur dentaire et propose des prestations extraordinaires", user_id: users.first.id }
+enterprise4 = { name: 'Dentist Moris', address: 'rose hill beau-bassin', description: "Entreprise opérant dans le secteur dentaire et propose des prestations extraordinaires", user_id: users.first.id }
 enterprise4 = Enterprise.create(enterprise4)
 image_url_enterprise4 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709147455/dentist_d02reg.jpg"
 enterprise4.photo.attach(io: URI.open(image_url_enterprise4), filename: "_d02reg.jpg")
@@ -104,48 +104,48 @@ slots4 = Slot.create([
   { start_time: DateTime.new(2024,3,25,16,0,0), end_time: DateTime.new(2024,3,25,16,59,0), enterprise_id: enterprise4.id, status: 0 },
   { start_time: DateTime.new(2024,3,25,17,0,0), end_time: DateTime.new(2024,3,25,17,59,0), enterprise_id: enterprise4.id, status: 0 },
 ])
-puts "slots bien créés "
+puts "slots bien créés"
 
 puts "creation des services"
 service1 = { title: 'coiffure homme', description: 'Description du service 1', enterprise_id: enterprise1.id, price: 3500 }
 service1 = Service.create(service1)
-image_url1 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
-service1.photo.attach(io: URI.open(image_url1), filename: "femme_h9xnkn.jpg")
+image_url1 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709143413/development/skubwcxnhy5bl4g29w1907oezgjm.jpg"
+service1.photo.attach(io: URI.open(image_url1), filename: "skubwcxnhy5bl4g29w1907oezgjm.jpg")
 
 service2 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise1.id, price: 2500 }
 service2 = Service.create(service2)
 image_url2 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
 service2.photo.attach(io: URI.open(image_url2), filename: "femme_h9xnkn.jpg")
 
-service3 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise2.id, price: 2500 }
+service3 = { title: 'Lavage', description: 'Nous prenons soin de votre animal de compagnie', enterprise_id: enterprise2.id, price: 2500 }
 service3 = Service.create(service3)
-image_url3 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
-service3.photo.attach(io: URI.open(image_url3), filename: "femme_h9xnkn.jpg")
+image_url3 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709651047/lavage_ciqe8i.jpg"
+service3.photo.attach(io: URI.open(image_url3), filename: "lavage_ciqe8i.jpg")
 
-service4 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise2.id, price: 2500 }
+service4 = { title: 'Stérilisation', description: 'Nous stérilisons votre animal pour éviter les mauvaises surprises', enterprise_id: enterprise2.id, price: 2500 }
 service4 = Service.create(service4)
-image_url4 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
-service4.photo.attach(io: URI.open(image_url4), filename: "femme_h9xnkn.jpg")
+image_url4 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709651285/steriliser_scbjwa.jpg"
+service4.photo.attach(io: URI.open(image_url4), filename: "steriliser_scbjwa.jpg")
 
-service5 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise3.id, price: 2500 }
+service5 = { title: 'consultation générale', description: 'pensez à nous pour vos consultations', enterprise_id: enterprise3.id, price: 2500 }
 service5 = Service.create(service5)
-image_url5 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
-service5.photo.attach(io: URI.open(image_url5), filename: "femme_h9xnkn.jpg")
+image_url5 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709651421/consultation_sx4qsj.jpg"
+service5.photo.attach(io: URI.open(image_url5), filename: "consultation_sx4qsj.jpg")
 
-service6 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise3.id, price: 2500 }
+service6 = { title: 'petite chirurgie', description: 'Tout le nécessaire pour vos petites chirurgies c\'est chez nous', enterprise_id: enterprise3.id, price: 2500 }
 service6 = Service.create(service6)
-image_url6 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
-service6.photo.attach(io: URI.open(image_url6), filename: "femme_h9xnkn.jpg")
+image_url6 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709651898/chirurgie_sywmnf.jpg"
+service6.photo.attach(io: URI.open(image_url6), filename: "chirurgie_sywmnf.jpg")
 
-service7 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise4.id, price: 2500 }
+service7 = { title: 'blanchiment dentaire', description: 'Nous vous redonnerons le sourire', enterprise_id: enterprise4.id, price: 2500 }
 service7 = Service.create(service7)
-image_url7 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
-service7.photo.attach(io: URI.open(image_url7), filename: "femme_h9xnkn.jpg")
+image_url7 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709652537/blanchiment_bkle1u.jpg"
+service7.photo.attach(io: URI.open(image_url7), filename: "blanchiment_bkle1u.jpg")
 
-service8 = { title: 'coiffure femme', description: 'Description du service 2', enterprise_id: enterprise4.id, price: 2500 }
+service8 = { title: 'soin de carries', description: 'Nous vous débarrassons de vos carries', enterprise_id: enterprise4.id, price: 2500 }
 service8 = Service.create(service8)
-image_url8 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1708754081/femme_h9xnkn.jpg"
-service8.photo.attach(io: URI.open(image_url8), filename: "femme_h9xnkn.jpg")
+image_url8 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709652665/carrie_w16njd.jpg"
+service8.photo.attach(io: URI.open(image_url8), filename: "carrie_w16njd.jpg")
 puts "services bien créés"
 
 puts "creation des reservations"
