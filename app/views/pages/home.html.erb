@@ -1,32 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISERV</title>
+    <link rel="components" href="home.css">
+</head>
+<body>
 
-
-
-<div class="container-fluid bg"
-  style=
-    "background-image: url('<%= asset_path('espace.jpg') %>');
-    background-size: cover;
-    background-position: center;">
-
+<div class="container-fluid bg" style="background-image: url('<%= asset_path('espace.jpg') %>'); background-size: cover; background-position: center;">
   <div class="row">
-    <div class= "col-12 d-flex justify-content-center align-items-center"  style="height: 80vh;">
+    <div class="col-12 d-flex justify-content-center align-items-center" style="height: 80vh;">
       <div class="center-div text-center">
         <h1>RISERV</h1>
         <form class="row g-3">
           <div class="col-auto">
-            <input type="text" class="form-control form-control-lg" id="searchInput">
+            <input type="text" class="form-control form-control-lg" id="searchInput" >
           </div>
           <div class="col-auto">
-            <%= link_to "recherche", "javascript:void(0)", data: { url: recherche_path(recherche: '') }, onclick: "performSearch()", class: "btn btn-secondary btn-lg" %>
+            <%= link_to "Rechercher", "javascript:void(0)", data: { url: recherche_path(recherche: '') }, onclick: "performSearch()", class: "btn btn-secondary btn-lg" %>
           </div>
         </form>
+        <p>Commencez dès maintenant à planifier vos rendez-vous!</p>
       </div>
     </div>
   </div>
-
-  
-
-
 </div>
+
+<!-- Ajoutez du contenu supplémentaire ici, comme des destinations populaires, des offres spéciales, etc. -->
+
+</body>
+</html>
 
 
 

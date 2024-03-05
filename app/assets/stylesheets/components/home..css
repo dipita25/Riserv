@@ -1,0 +1,23 @@
+/* Styles pour la classe 'center-div' */
+.center-div {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+/* Styles pour le champ de recherche et le bouton */
+.form-control-lg {
+  width: 400px; /* Ajustez la largeur du champ de recherche selon vos besoins */
+}
+
+.btn-lg {
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+/* Styles pour le paragraphe de description */
+.center-div p {
+  font-size: 18px;
+  margin-top: 20px;
+}
