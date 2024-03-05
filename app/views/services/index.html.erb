@@ -27,34 +27,34 @@
     <%end %>
   </div>
 
-  <div class="row mt-5">
+  <div class="row mt-5 mb-2">
     <h1>Reviews</h1>
-  </div>
 
 
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
 
-      <% if @reviews.length != 0 %>
-        <% if @reviews.length > 1  %>
-          <div class="carousel-item active" data-bs-interval="2000">
-            <h5 class="card-title"><%= User.find(@reviews[0].user_id).email %></h5>
-            <p class="card-text"><%= @reviews[0].content %></p>
-          </div>
+        <% if @reviews.length != 0 %>
+          <% if @reviews.length > 1  %>
+            <div class="carousel-item active" data-bs-interval="2000">
+              <h5 class="card-title"><%= User.find(@reviews[0].user_id).email %></h5>
+              <p class="card-text"><%= @reviews[0].content %></p>
+            </div>
 
-          <div class="carousel-item" data-bs-interval="2000">
-            <h5 class="card-title"><%= User.find(@reviews[1].user_id).email %></h5>
-            <p class="card-text"><%= @reviews[1].content %></p>
-          </div>
-          <%= link_to "tous les Avis", enterprise_reviews_path(@enterprise.id), class: "btn btn-primary"%>
-        <% else %>
-          <div class="carousel-item active">
-            <h5 class="card-title"><%= User.find(@reviews[0].user_id).email %></h5>
-            <p class="card-text"><%= @reviews[0].content %></p>
-          </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <h5 class="card-title"><%= User.find(@reviews[1].user_id).email %></h5>
+              <p class="card-text"><%= @reviews[1].content %></p>
+            </div>
+            <!--<%= link_to "tous les Avis", enterprise_reviews_path(@enterprise.id), class: "btn btn-primary"%>-->
+          <% else %>
+            <div class="carousel-item active">
+              <h5 class="card-title"><%= User.find(@reviews[0].user_id).email %></h5>
+              <p class="card-text"><%= @reviews[0].content %></p>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
 
+      </div>
     </div>
   </div>
 
