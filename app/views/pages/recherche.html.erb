@@ -36,9 +36,15 @@
               <% end %>
             <% end %>
 
-            <%= Geocoder::Calculations.distance_between(
-              [@latitude, @longitude],
-              [enterprise.latitude, enterprise.longitude]).to_i %> KM
+            <div data-controller="user-position">
+              <span data-user-position-target="latitude" data-user-position-latitude-value="">Latitude</span>
+              <span data-user-position-target="longitude" data-user-position-longitude-value="">Longitude <%=  %></span>
+              <span>
+                <%= Geocoder::Calculations.distance_between(
+                [@latitude, @longitude],
+                [enterprise.latitude, enterprise.longitude]).to_i %> KM
+              </span>
+            </div>
 
           </div>
         </div>

@@ -10,22 +10,18 @@
   <div class="row">
     <div class= "col-12 d-flex justify-content-center align-items-center"  style="height: 80vh;">
       <div class="center-div text-center">
-        <h1>RISERV</h1>
-        <form class="row g-3">
+        <h1 class="display-1 text-white">RISERV</h1>
+        <form class="row g-3" data-controller="user-position">
           <div class="col-auto">
-            <input type="text" class="form-control form-control-lg" id="searchInput">
+            <input type="text" class="form-control form-control-lg" id="searchInput" data-user-position-target="input">
           </div>
-          <div class="col-auto">
+          <div class="col-auto" data-user-position-target="userPosition" data-action="click->user-position#getUserPosition">
             <%= link_to "recherche", "javascript:void(0)", data: { url: recherche_path(recherche: '') }, onclick: "performSearch()", class: "btn btn-secondary btn-lg" %>
           </div>
         </form>
       </div>
     </div>
   </div>
-
-  
-
-
 </div>
 
 

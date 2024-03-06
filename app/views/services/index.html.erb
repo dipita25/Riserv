@@ -14,7 +14,7 @@
     <% @services.each do |service| %>
       <div class="col-md-3">
         <div class="card mt-3" style="width: 18rem;">
-          <%= cl_image_tag(service.photo.key, crop: :fit, class: "card-img-top game-image") %>
+          <%= cl_image_tag(service.photo.key, width: 400, height: 300, crop: :fit, class: "card-img-top enterprise-image") %>
           <div class="card-body">
             <h5 class="card-title"><%= service.title %></h5>
             <p class="card-text"><%= service.description %>
