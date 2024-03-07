@@ -10,21 +10,19 @@
     </div>
   </div>
 
-  <div class="row">
-    <% @services.each do |service| %>
-      <div class="col-md-3">
-        <div class="card mt-3" style="width: 18rem;">
-          <%= cl_image_tag(service.photo.key, width: 400, height: 300, crop: :fit, class: "card-img-top enterprise-image") %>
-          <div class="card-body">
-            <h5 class="card-title"><%= service.title %></h5>
-            <p class="card-text"><%= service.description %>
-            </p>
 
-            <%= link_to "Détails", enterprise_service_path(@enterprise.id, service), class: "btn btn-primary"%>
+  <div class="row">
+    <div class="cards">
+      <% @services.each do |service| %>
+
+        <%= link_to enterprise_service_path(@enterprise.id, service) do %>
+          <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(service.photo.key, crop: :fit, width: 800, height: 600) %>');">
+            <%= service.title %>
           </div>
-        </div>
-      </div>
-    <%end %>
+        <% end %>
+      <%end %>
+    </div>
   </div>
 
   <div class="row mt-5 mb-2">
@@ -38,23 +36,25 @@
           <% if @reviews.length > 1  %>
 
             <div class="carousel-item active">
-              <div class="text-block">
-                <h3><%= User.find(@reviews[0].user_id).email %></h3>
-                <p><%= @reviews[0].content %></p>
+              <div class="card-category">
+                <h3 class="text-dark"><%= User.find(@reviews[0].user_id).email %></h3>
+                <p class="text-dark"><%= @reviews[0].content %></p>
               </div>
             </div>
 
             <div class="carousel-item" data-bs-interval="2000">
-              <div class="text-block">
-                <h3><%= User.find(@reviews[1].user_id).email %></h3>
-                <p><%= @reviews[1].content %></p>
+              <div class="card-category">
+                <h3 class="text-dark"><%= User.find(@reviews[1].user_id).email %></h3>
+                <p class="text-dark"><%= @reviews[1].content %></p>
               </div>
             </div>
             <!--<%= link_to "tous les Avis", enterprise_reviews_path(@enterprise.id), class: "btn btn-primary"%>-->
           <% else %>
             <div class="carousel-item active">
-              <h5 class="card-title"><%= User.find(@reviews[0].user_id).email %></h5>
-              <p class="card-text"><%= @reviews[0].content %></p>
+              <div class="card-category">
+                <h3 class="text-dark"><%= User.find(@reviews[0].user_id).email %></h3><br/>
+                <p class="text-dark"><%= @reviews[0].content %></p>
+              </div>
             </div>
           <% end %>
         <% end %>

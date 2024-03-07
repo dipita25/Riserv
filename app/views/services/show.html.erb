@@ -1,7 +1,7 @@
 <!-- app/views/reservations/show.html.erb -->
 <div class="container">
 
-  <div class="row">
+  <div class="row mx-auto">
     <div class="col-6 mt-3">
       <h2>Detail du Service </h2>
 
@@ -34,10 +34,18 @@
 
     </div>
 
-    <div class="col-6 mt-5">
-      <%= cl_image_tag(@service.photo.key,
-        width: 500, height: 350, crop: :fit) %>
+    <div class="col-6 card-category-show mt-3 show d-flex justify-content-center"
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(@service.photo.key, crop: :fit, width: 800, height: 1000) %>');">
     </div>
   </div>
 
 </div>
+
+
+
+<style>
+.show{
+ border-width: 50px;
+ height: 500
+}
+</style>

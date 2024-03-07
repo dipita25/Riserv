@@ -22,9 +22,9 @@ puts "Vidange terminée"
 
 puts "creation des users"
 users = User.create([
-  { email: 'jonathan@gmail.com', password: '123456' },
-  { email: 'daren@gmail.com', password: '123456' },
-  { email: 'test@gmail.com', password: '123456' }
+  { email: 'jonathan@gmail.com', password: '123456', username: 'jonathan' },
+  { email: 'edwin@gmail.com', password: '123456', username: 'edwin'  },
+  { email: 'test@gmail.com', password: '123456', username: 'george'  }
 ])
 puts "users bien créés"
 
