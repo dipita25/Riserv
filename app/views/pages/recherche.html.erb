@@ -2,70 +2,24 @@
   <h1>Résultats de recherche pour "  <%= @text %>"</h1>
 
   <div class="row">
-    <% @enterprises.each do |enterprise| %>
-      <div class="col-md-3">
-        <div class="card mt-3" style="width: 18rem;">
-          <%= cl_image_tag(enterprise.photo.key, width: 400, height: 300, crop: :fit, class: "card-img-top enterprise-image") %>
-          <div class="card-body">
-            <h5 class="card-title"><%= enterprise.name %></h5>
-            <p class="card-text"><%= enterprise.description %>
-            </p>
+    <div class="cards">
+      <% @enterprises.each do |enterprise| %>
 
-            <%= link_to "consulter les services", enterprise_services_path(enterprise.id), class: "btn btn-primary"%>
-            <%= link_to "Reviews", enterprise_reviews_path(enterprise.id), class: "btn btn-primary mt-2"%>
-            <% if Favorite.where(enterprise_id: enterprise.id, user_id: current_user.id).length == 0 %>
-              <%= link_to "#" do%>
-                <i class="fa-regular fa-star fa-2x"
-                  data-controller="favori"
-                  data-favori-target="favori_add"
-                  data-favori-id-value="<%= enterprise.id %>"
-                  data-action="mouseenter->favori#handleMouseEnter click->favori#ajouterRetirer">
-                </i>
-              <% end %>
-            <% end %>
-
-
-            <% if Favorite.where(enterprise_id: enterprise.id, user_id: current_user.id).length > 0 %>
-              <%= link_to "#" do%>
-                <i class="fa-solid fa-star fa-2x"
-                  data-controller="favori"
-                  data-favori-target="favori_add"
-                  data-favori-id-value="<%= enterprise.id %>"
-                  data-action="mouseenter->favori#handleMouseEnter click->favori#ajouterRetirer">
-                </i>
-              <% end %>
-            <% end %>
-
-            <div data-controller="user-position">
-              <span data-user-position-target="latitude" data-user-position-latitude-value="">Latitude</span>
-              <span data-user-position-target="longitude" data-user-position-longitude-value="">Longitude <%=  %></span>
-              <span>
-                <%= Geocoder::Calculations.distance_between(
-                [@latitude, @longitude],
-                [enterprise.latitude, enterprise.longitude]).to_i %> KM
-              </span>
-            </div>
-
+        <%= link_to enterprise_services_path(enterprise.id) do %>
+          <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(enterprise.photo.key, crop: :fill, width: 800, height: 600) %>');">
+            <%= enterprise.name %>
           </div>
-        </div>
-      </div>
-    <%end %>
+        <% end %>
+      <%end %>
+    </div>
   </div>
-
-
-
-
-
-
-
 
 </div>
 
 
 <style>
-  .enterprise-image {
-    width: 287px;
-    height: 200px;
-    object-fit: fit; /* ou `object-fit: contain;` selon le rendu souhaité */
-  }
+  a {
+  text-decoration: none;
+}
 </style>
