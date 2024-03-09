@@ -37,14 +37,14 @@
 
             <div class="carousel-item active">
               <div class="card-category">
-                <h3 class="text-dark"><%= User.find(@reviews[0].user_id).email %></h3>
+                <h2 class="text-dark"><%= User.find(@reviews[0].user_id).username %> : </h2>
                 <p class="text-dark"><%= @reviews[0].content %></p>
               </div>
             </div>
 
             <div class="carousel-item" data-bs-interval="2000">
               <div class="card-category">
-                <h3 class="text-dark"><%= User.find(@reviews[1].user_id).email %></h3>
+                <h2 class="text-dark"><%= User.find(@reviews[1].user_id).username %></h2>
                 <p class="text-dark"><%= @reviews[1].content %></p>
               </div>
             </div>
@@ -52,7 +52,7 @@
           <% else %>
             <div class="carousel-item active">
               <div class="card-category">
-                <h3 class="text-dark"><%= User.find(@reviews[0].user_id).email %></h3><br/>
+                <h2 class="text-dark"><%= User.find(@reviews[0].user_id).username %></h2><br/>
                 <p class="text-dark"><%= @reviews[0].content %></p>
               </div>
             </div>
