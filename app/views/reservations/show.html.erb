@@ -15,20 +15,22 @@
 
       </div>
 
-      <% if @reservation.user_id == current_user.id %>
-          <%= link_to edit_enterprise_reservation_path(@enterprise_id, @reservation), class: "btn btn-primary" do %>
-            <i class="fa-regular fa-pen-to-square fa-2x"></i>
-          <% end %>
+    <% if @reservation.user_id == current_user.id %>
+          <div class="d-flex mt-2">
+            <%= link_to edit_enterprise_reservation_path(@enterprise_id, @reservation), class: "btn btn-primary mx-1" do %>
+              <i class="fa-regular fa-pen-to-square fa-2x"></i> Edit
+            <% end %>
 
-        <div class="row mt-2">
-          <%= button_to enterprise_reservation_path(@enterprise_id, @reservation), method: :delete,
-                    data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" do %>
-              <i class="fa-solid fa-trash-can fa-2x"></i>
-          <% end %><br/>
-        </div>
-      <% end %>
+            <%= button_to enterprise_reservation_path(@enterprise_id, @reservation), method: :delete,
+                          data: {"turbo_method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary mx-4" do %>
+              <i class="fa-solid fa-trash-can fa-2x"></i> Delete
+            <% end %>
+          </div>
+        <% end %>
 
+      </div>
     </div>
+
 
     <%# <div class="col-7 mt-3">
       <%= js_map [{latitude: @enterprise.latitude, longitude: @enterprise.longitude, label: @enterprise.name}], width: "800px", height: "400px" %>
