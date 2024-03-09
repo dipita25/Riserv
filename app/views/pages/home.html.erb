@@ -1,18 +1,10 @@
-
-
-
-<div class="container-fluid bg"
-  style=
-    "background-image: url('<%= asset_path('back.png') %>');
-    background-size: cover;
-    background-position: center;">
-
-  <div class="row">
-    <div class= "col-12 d-flex justify-content-center align-items-center"  style="height: 80vh;">
+<div class="home-bg bg-white mb-4">
+  <div class="banner container mt-4" style="background-image: url('<%= asset_path('back.png') %>');
+      background-size: cover;
+      background-position: center;">
+    <div class="row">
+    <div class= "d-flex justify-content-center align-items-center"  style="height: 60vh;">
       <div class="center-div text-center">
-        <br/>
-        <br/>
-        <br/>
         <form class="row g-3" data-controller="user-position">
           <div class="col-auto">
             <input type="text" class="form-control form-control-lg" id="searchInput" data-user-position-target="input">
@@ -24,9 +16,151 @@
       </div>
     </div>
   </div>
+  </div>
+
+  <div class="container mt-4 mb-4" style="width: 100%;">
+    <div class="head-title" style=" display: flex; justify-content: center; align-items: center;">
+      <h1 class="head-slogan">Découvrez la simplicité avec <strong>Riserv</strong></h1>
+    </div>
+  </div>
+  <div class="container cards">
+    <div class="card-category-show"
+      style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<%= asset_path('services.png', crop: :fit, width: 800, height: 600) %>');">
+      Consulter les services proposés
+    </div>
+    <div class="card-category-show"
+      style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<%= asset_path('creneaux.png', crop: :fit, width: 800, height: 600) %>');">
+      Réservez un créneau libre
+    </div>
+    <div class="card-category-show"
+      style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<%= asset_path('reservation.png', crop: :fit, width: 800, height: 600) %>');">
+      Suivez la carte pour aller au RDV
+    </div>
+  </div>
+  <!--<div class="mt-4 mb-4">
+    <div class="container col-sm-6 col-lg-4 mb-4 flex-container">
+      <div class="card-home text-center bg-tansparent border-dark">
+        <div class="card-body">
+          <h5 class="card-title">"This app is a breath of fresh air! I love how it connects me with people who share my passions. I've already met some amazing people and participated in fun events."</h5>
+        </div>
+      </div>
+      <div class="card-home text-center bg-tansparent border-dark">
+        <div class="card-body">
+          <h5 class="card-title">"HOBB is a great way to get out of your comfort zone and try new things. I finally signed up for that pottery class I've always wanted to take, thanks to an event I found on the app."</h5>
+        </div>
+      </div>
+      <div class="card-home text-center bg-tansparent border-dark">
+        <div class="card-body">
+          <h5 class="card-title">"The app is easy to use and navigate. I love the clean interface and the vibrant colors. It makes finding events and connecting with people enjoyable."</h5>
+        </div>
+      </div>
+    </div>
+  </div>-->
 </div>
 
 
+<style>
+
+.banner {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 18px;
+}
+.header-title, .home-banner-title {
+  line-height: 100%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 250%;
+}
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+.banner p {
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.join-btn {
+  border: 1px;
+  border-radius: 8px;
+}
+.container-home-banner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  .home-banner-des {
+    width: 40%;
+  }
+}
+.head-slogan {
+  width: 65%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: .2rem;
+  margin-block: 3rem;
+  text-align: center;
+}
+.flex-container {
+  align-items: center;
+  display: flex;
+  flex: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow: visible;
+  padding: 0%;
+  position: relative;
+  width: 100%
+}
+.head-title h5 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+}
+.cards-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  position: relative;
+  object-fit: cover;
+  height: 60%;
+}
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.card-title h5 {
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+.card-home {
+  height: 60%;
+  width: 32%;
+  justify-content: space-between;
+}
+.card {
+  margin-right: 10px;
+  width: 800;
+}
+
+</style>
 
 <script>
   function performSearch() {
