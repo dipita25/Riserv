@@ -26,7 +26,6 @@
   </div>
 
   <div class="row mt-5 mb-2">
-    <h1>Reviews</h1>
 
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -37,8 +36,8 @@
 
             <div class="carousel-item active">
               <div class="card-category">
-                <h2 class="text-dark"><%= User.find(@reviews[0].user_id).username %> : </h2>
-                <p class="text-dark"><%= @reviews[0].content %></p>
+                <h2 class="text-dark"><%= User.find(@reviews[0].user_id).username %> </h2>
+                <p class="text-dark"> : <%= @reviews[0].content %></p>
               </div>
             </div>
 

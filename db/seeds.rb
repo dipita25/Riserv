@@ -36,12 +36,24 @@ enterprise1 = Enterprise.create(enterprise1)
 image_url_enterprise1 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709650176/rajiv_a7tbjv.png"
 enterprise1.photo.attach(io: URI.open(image_url_enterprise1), filename: "rajiv_a7tbjv.png")
 
+enterprise5 = { name: 'Afro coiffure', address: 'port Louis', description: "Entreprise du secteur de la coiffure et propose des prestations extraordinaires",
+  user_id: users.first.id }
+enterprise5 = Enterprise.create(enterprise5)
+image_url_enterprise5 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1711173058/afro-entreprise_fa69mr.jpg"
+enterprise5.photo.attach(io: URI.open(image_url_enterprise5), filename: "afro-entreprise_fa69mr.png")
+
+enterprise6 = { name: 'Chung coiffure', address: 'Pointe aux Sables', description: "Entreprise du secteur de la coiffure et propose des prestations extraordinaires",
+  user_id: users.first.id }
+enterprise6 = Enterprise.create(enterprise6)
+image_url_enterprise6 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1711174022/salon_asiatique_o6emis.jpg"
+enterprise6.photo.attach(io: URI.open(image_url_enterprise6), filename: "afro-salon_asiatique_o6emis.png")
+
 enterprise2 = { name: 'Pet Consult', address: 'Port louis', description: "Entreprise opérant dans le secteur vétérinaire et propose des prestations extraordinaires", user_id: users.first.id }
 enterprise2 = Enterprise.create(enterprise2)
 image_url_enterprise2 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709147455/pet_ndplu7.jpg"
 enterprise2.photo.attach(io: URI.open(image_url_enterprise2), filename: "pet_ndplu7.jpg")
 
-enterprise3 = { name: 'Neelesh Consulting', address: 'cap malheureux', description: "Entreprise opérant dans le secteur de la santé et propose des prestations extraordinaires",
+enterprise3 = { name: 'Bio Consulting', address: 'cap malheureux', description: "Entreprise opérant dans le secteur de la santé et propose des prestations extraordinaires",
   user_id: users.first.id }
 enterprise3 = Enterprise.create(enterprise3)
 image_url_enterprise3 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709147455/clinic_o8lsnv.webp"
@@ -55,54 +67,78 @@ puts "enterprises bien crées"
 
 puts "creation des slots"
 slots1 = Slot.create([
-  { start_time: DateTime.new(2024,3,25,8,0,0), end_time: DateTime.new(2024,3,25,8,59,0), enterprise_id: enterprise1.id, status: 1 },
-  { start_time: DateTime.new(2024,3,25,9,0,0), end_time: DateTime.new(2024,3,25,9,59,0), enterprise_id: enterprise1.id, status: 1 },
-  { start_time: DateTime.new(2024,3,25,10,0,0), end_time: DateTime.new(2024,3,25,10,59,0), enterprise_id: enterprise1.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,11,0,0), end_time: DateTime.new(2024,3,25,11,59,0), enterprise_id: enterprise1.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,12,0,0), end_time: DateTime.new(2024,3,25,12,59,0), enterprise_id: enterprise1.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,14,0,0), end_time: DateTime.new(2024,3,25,14,59,0), enterprise_id: enterprise1.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,15,0,0), end_time: DateTime.new(2024,3,25,15,59,0), enterprise_id: enterprise1.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,16,0,0), end_time: DateTime.new(2024,3,25,16,59,0), enterprise_id: enterprise1.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,17,0,0), end_time: DateTime.new(2024,3,25,17,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,8,0,0), end_time: DateTime.new(2024,3,23,8,59,0), enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,9,0,0), end_time: DateTime.new(2024,3,23,9,59,0), enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,10,0,0), end_time: DateTime.new(2024,3,23,10,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,11,0,0), end_time: DateTime.new(2024,3,23,11,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,12,0,0), end_time: DateTime.new(2024,3,23,12,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,14,0,0), end_time: DateTime.new(2024,3,23,14,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,15,0,0), end_time: DateTime.new(2024,3,23,15,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,16,0,0), end_time: DateTime.new(2024,3,23,16,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,17,0,0), end_time: DateTime.new(2024,3,23,17,59,0), enterprise_id: enterprise1.id, status: 0 },
 ])
 
 
 slots2 = Slot.create([
-  { start_time: DateTime.new(2024,3,25,8,0,0), end_time: DateTime.new(2024,3,25,8,59,0), enterprise_id: enterprise2.id, status: 1 },
-  { start_time: DateTime.new(2024,3,25,9,0,0), end_time: DateTime.new(2024,3,25,9,59,0), enterprise_id: enterprise2.id, status: 1 },
-  { start_time: DateTime.new(2024,3,25,10,0,0), end_time: DateTime.new(2024,3,25,10,59,0), enterprise_id: enterprise2.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,11,0,0), end_time: DateTime.new(2024,3,25,11,59,0), enterprise_id: enterprise2.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,12,0,0), end_time: DateTime.new(2024,3,25,12,59,0), enterprise_id: enterprise2.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,14,0,0), end_time: DateTime.new(2024,3,25,14,59,0), enterprise_id: enterprise2.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,15,0,0), end_time: DateTime.new(2024,3,25,15,59,0), enterprise_id: enterprise2.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,16,0,0), end_time: DateTime.new(2024,3,25,16,59,0), enterprise_id: enterprise2.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,17,0,0), end_time: DateTime.new(2024,3,25,17,59,0), enterprise_id: enterprise2.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,8,0,0), end_time: DateTime.new(2024,3,23,8,59,0), enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,9,0,0), end_time: DateTime.new(2024,3,23,9,59,0), enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,10,0,0), end_time: DateTime.new(2024,3,23,10,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,11,0,0), end_time: DateTime.new(2024,3,23,11,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,12,0,0), end_time: DateTime.new(2024,3,23,12,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,14,0,0), end_time: DateTime.new(2024,3,23,14,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,15,0,0), end_time: DateTime.new(2024,3,23,15,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,16,0,0), end_time: DateTime.new(2024,3,23,16,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,17,0,0), end_time: DateTime.new(2024,3,23,17,59,0), enterprise_id: enterprise1.id, status: 0 },
 ])
 
 
 slots3 = Slot.create([
-  { start_time: DateTime.new(2024,3,25,8,0,0), end_time: DateTime.new(2024,3,25,8,59,0), enterprise_id: enterprise3.id, status: 1 },
-  { start_time: DateTime.new(2024,3,25,9,0,0), end_time: DateTime.new(2024,3,25,9,59,0), enterprise_id: enterprise3.id, status: 1 },
-  { start_time: DateTime.new(2024,3,25,10,0,0), end_time: DateTime.new(2024,3,25,10,59,0), enterprise_id: enterprise3.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,11,0,0), end_time: DateTime.new(2024,3,25,11,59,0), enterprise_id: enterprise3.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,12,0,0), end_time: DateTime.new(2024,3,25,12,59,0), enterprise_id: enterprise3.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,14,0,0), end_time: DateTime.new(2024,3,25,14,59,0), enterprise_id: enterprise3.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,15,0,0), end_time: DateTime.new(2024,3,25,15,59,0), enterprise_id: enterprise3.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,16,0,0), end_time: DateTime.new(2024,3,25,16,59,0), enterprise_id: enterprise3.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,17,0,0), end_time: DateTime.new(2024,3,25,17,59,0), enterprise_id: enterprise3.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,8,0,0), end_time: DateTime.new(2024,3,23,8,59,0), enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,9,0,0), end_time: DateTime.new(2024,3,23,9,59,0), enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,10,0,0), end_time: DateTime.new(2024,3,23,10,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,11,0,0), end_time: DateTime.new(2024,3,23,11,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,12,0,0), end_time: DateTime.new(2024,3,23,12,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,14,0,0), end_time: DateTime.new(2024,3,23,14,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,15,0,0), end_time: DateTime.new(2024,3,23,15,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,16,0,0), end_time: DateTime.new(2024,3,23,16,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,17,0,0), end_time: DateTime.new(2024,3,23,17,59,0), enterprise_id: enterprise1.id, status: 0 },
 ])
 
 
 slots4 = Slot.create([
-  { start_time: DateTime.new(2024,3,25,8,0,0), end_time: DateTime.new(2024,3,25,8,59,0), enterprise_id: enterprise4.id, status: 1 },
-  { start_time: DateTime.new(2024,3,25,9,0,0), end_time: DateTime.new(2024,3,25,9,59,0), enterprise_id: enterprise4.id, status: 1 },
-  { start_time: DateTime.new(2024,3,25,10,0,0), end_time: DateTime.new(2024,3,25,10,59,0), enterprise_id: enterprise4.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,11,0,0), end_time: DateTime.new(2024,3,25,11,59,0), enterprise_id: enterprise4.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,12,0,0), end_time: DateTime.new(2024,3,25,12,59,0), enterprise_id: enterprise4.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,14,0,0), end_time: DateTime.new(2024,3,25,14,59,0), enterprise_id: enterprise4.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,15,0,0), end_time: DateTime.new(2024,3,25,15,59,0), enterprise_id: enterprise4.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,16,0,0), end_time: DateTime.new(2024,3,25,16,59,0), enterprise_id: enterprise4.id, status: 0 },
-  { start_time: DateTime.new(2024,3,25,17,0,0), end_time: DateTime.new(2024,3,25,17,59,0), enterprise_id: enterprise4.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,8,0,0), end_time: DateTime.new(2024,3,23,8,59,0), enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,9,0,0), end_time: DateTime.new(2024,3,23,9,59,0), enterprise_id: enterprise1.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,10,0,0), end_time: DateTime.new(2024,3,23,10,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,11,0,0), end_time: DateTime.new(2024,3,23,11,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,12,0,0), end_time: DateTime.new(2024,3,23,12,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,14,0,0), end_time: DateTime.new(2024,3,23,14,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,15,0,0), end_time: DateTime.new(2024,3,23,15,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,16,0,0), end_time: DateTime.new(2024,3,23,16,59,0), enterprise_id: enterprise1.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,17,0,0), end_time: DateTime.new(2024,3,23,17,59,0), enterprise_id: enterprise1.id, status: 0 },
+])
+
+slots5 = Slot.create([
+  { start_time: DateTime.new(2024,3,23,8,0,0), end_time: DateTime.new(2024,3,23,8,59,0), enterprise_id: enterprise5.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,9,0,0), end_time: DateTime.new(2024,3,23,9,59,0), enterprise_id: enterprise5.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,10,0,0), end_time: DateTime.new(2024,3,23,10,59,0), enterprise_id: enterprise5.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,11,0,0), end_time: DateTime.new(2024,3,23,11,59,0), enterprise_id: enterprise5.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,12,0,0), end_time: DateTime.new(2024,3,23,12,59,0), enterprise_id: enterprise5.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,14,0,0), end_time: DateTime.new(2024,3,23,14,59,0), enterprise_id: enterprise5.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,15,0,0), end_time: DateTime.new(2024,3,23,15,59,0), enterprise_id: enterprise5.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,16,0,0), end_time: DateTime.new(2024,3,23,16,59,0), enterprise_id: enterprise5.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,17,0,0), end_time: DateTime.new(2024,3,23,17,59,0), enterprise_id: enterprise5.id, status: 0 },
+])
+
+slots6 = Slot.create([
+  { start_time: DateTime.new(2024,3,23,8,0,0), end_time: DateTime.new(2024,3,23,8,59,0), enterprise_id: enterprise6.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,9,0,0), end_time: DateTime.new(2024,3,23,9,59,0), enterprise_id: enterprise6.id, status: 1 },
+  { start_time: DateTime.new(2024,3,23,10,0,0), end_time: DateTime.new(2024,3,23,10,59,0), enterprise_id: enterprise6.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,11,0,0), end_time: DateTime.new(2024,3,23,11,59,0), enterprise_id: enterprise6.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,12,0,0), end_time: DateTime.new(2024,3,23,12,59,0), enterprise_id: enterprise6.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,14,0,0), end_time: DateTime.new(2024,3,23,14,59,0), enterprise_id: enterprise6.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,15,0,0), end_time: DateTime.new(2024,3,23,15,59,0), enterprise_id: enterprise6.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,16,0,0), end_time: DateTime.new(2024,3,23,16,59,0), enterprise_id: enterprise6.id, status: 0 },
+  { start_time: DateTime.new(2024,3,23,17,0,0), end_time: DateTime.new(2024,3,23,17,59,0), enterprise_id: enterprise6.id, status: 0 },
 ])
 puts "slots bien créés"
 
@@ -146,6 +182,21 @@ service8 = { title: 'soin de carries', description: 'Nous vous débarrassons de 
 service8 = Service.create(service8)
 image_url8 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1709652665/carrie_w16njd.jpg"
 service8.photo.attach(io: URI.open(image_url8), filename: "carrie_w16njd.jpg")
+
+service9 = { title: 'coiffure afro homme', description: 'Nous prenons soin de cheveux africains', enterprise_id: enterprise5.id, price: 2500 }
+service9 = Service.create(service9)
+image_url9 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1711172844/afro1_illrls.jpg"
+service9.photo.attach(io: URI.open(image_url9), filename: "afro1_illrls.jpg")
+
+service10 = { title: 'coiffure afro femme', description: 'Nous prenons soin de cheveux africains', enterprise_id: enterprise5.id, price: 2500 }
+service10 = Service.create(service10)
+image_url10 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1711172844/afro2_ftgy9n.jpg"
+service10.photo.attach(io: URI.open(image_url10), filename: "afro2_ftgy9n.jpg")
+
+service11 = { title: 'coiffure pour cheveux asiatiques femmes', description: 'Nous prenons soin de cheveux asiatiques', enterprise_id: enterprise5.id, price: 2500 }
+service11 = Service.create(service11)
+image_url11 = "https://res.cloudinary.com/dhyxhfi5d/image/upload/v1711174022/femme_kxscf8.png"
+service10.photo.attach(io: URI.open(image_url10), filename: "femme_kxscf8.jpg")
 puts "services bien créés"
 
 puts "creation des reservations"
