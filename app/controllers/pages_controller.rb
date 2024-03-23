@@ -11,7 +11,7 @@ class PagesController < ApplicationController
       @enterprises = Enterprise.near("Moka", 20000)
     else
       @services = Service.where("title LIKE ?", "%#{@text}%")
-      @enterprises = Enterprise.joins(:services).where(services: { id: @services.map(&:id) }).distinct.near("Moka", 20000)
+      @enterprises = Enterprise.joins(:services).where(services: { id: @services.map(&:id) }).distinct
 
     end
 
